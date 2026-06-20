@@ -6,21 +6,26 @@
 <title>TGV Worldwide Holidays | Luxury Travel Concierge</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --purple: #5A136D;
-  --gold: #D8C49A;
-  --green: #2AB43A;
-  --bg: #FAF8F4;
+  --purple: #350F43;
+  --purple-light: #5A136D;
+  --purple-glow: rgba(90, 19, 109, 0.08);
+  --gold: #C2A476;
+  --gold-light: #E0CEB4;
+  --gold-glow: rgba(194, 164, 118, 0.15);
+  --green: #1C8A33;
+  --bg: #FAF9F6; /* Luxury warm cream */
   --card: #FFFFFF;
-  --ink: #201625;
-  --muted: #716977;
-  --line: rgba(90, 19, 109, 0.14);
-  --soft: rgba(216, 196, 154, 0.22);
-  --shadow: 0 26px 80px rgba(47, 20, 54, 0.16);
-  --shadow-soft: 0 18px 50px rgba(47, 20, 54, 0.10);
-  --container: min(1400px, calc(100vw - 80px));
+  --ink: #1C1221;
+  --muted: #6E6473;
+  --line: rgba(53, 15, 67, 0.08);
+  --line-gold: rgba(194, 164, 118, 0.25);
+  --soft: rgba(194, 164, 118, 0.12);
+  --shadow: 0 30px 80px rgba(53, 15, 67, 0.08);
+  --shadow-soft: 0 16px 40px rgba(53, 15, 67, 0.04);
+  --container: min(1360px, calc(100vw - 64px));
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,8 +33,8 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: "Inter", sans-serif;
-  font-size: 17px;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -37,178 +42,261 @@ body.modal-open { overflow: hidden; }
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; }
-button { cursor: pointer; }
+button { cursor: pointer; border: none; background: none; }
 h1, h2, h3, h4 {
   font-family: "Playfair Display", serif;
   font-weight: 600;
-  line-height: 1.04;
-  letter-spacing: 0;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
 .container { width: var(--container); margin: 0 auto; }
-.section { padding: 120px 0; position: relative; }
+.section { padding: 100px 0; position: relative; }
 .section.alt { background: #fff; }
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--purple);
-  font-size: 12px;
+  gap: 12px;
+  color: var(--gold);
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.6px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 .eyebrow::before {
   content: "";
-  width: 34px;
+  width: 24px;
   height: 1px;
   background: var(--gold);
 }
 .section-head {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.55fr);
-  gap: 80px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
   align-items: end;
-  margin-bottom: 64px;
+  margin-bottom: 56px;
 }
 .section-title {
-  font-size: clamp(42px, 4.6vw, 68px);
-  margin-top: 18px;
+  font-size: clamp(36px, 4vw, 56px);
+  margin-top: 14px;
+  color: var(--purple);
 }
 .section-copy {
   color: var(--muted);
-  max-width: 560px;
+  font-size: 17px;
+  max-width: 520px;
 }
 .btn {
-  min-height: 54px;
+  min-height: 52px;
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0 26px;
+  padding: 0 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.2px;
-  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, color 220ms ease;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.btn svg { width: 18px; height: 18px; }
+.btn svg { width: 16px; height: 16px; transition: transform 0.3s ease; }
+.btn:hover svg { transform: translateX(3px); }
 .btn-primary {
   background: var(--purple);
   color: #fff;
-  box-shadow: 0 18px 35px rgba(90, 19, 109, 0.28);
+  box-shadow: 0 12px 30px rgba(53, 15, 67, 0.2);
 }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 24px 44px rgba(90, 19, 109, 0.35); }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(53, 15, 67, 0.3);
+  background: var(--purple-light);
+}
 .btn-secondary {
-  border-color: rgba(255,255,255,0.72);
+  border-color: rgba(255,255,255,0.4);
   color: #fff;
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
 }
-.btn-secondary:hover { background: #fff; color: var(--purple); transform: translateY(-3px); }
+.btn-secondary:hover {
+  background: #fff;
+  color: var(--purple);
+  transform: translateY(-2px);
+  border-color: #fff;
+}
 .btn-light {
   border-color: var(--line);
   color: var(--purple);
   background: #fff;
 }
-.btn-light:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+.btn-light:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--gold);
+}
 
+/* Site Navigation */
 .site-nav {
   position: fixed;
   top: 20px;
   left: 50%;
-  z-index: 50;
-  width: min(1400px, calc(100vw - 48px));
-  height: 78px;
+  z-index: 100;
+  width: min(1360px, calc(100vw - 32px));
+  height: 74px;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
-  padding: 0 18px 0 22px;
+  gap: 24px;
+  padding: 0 16px 0 20px;
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.24);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 999px;
-  background: rgba(32, 22, 37, 0.34);
-  backdrop-filter: blur(22px);
-  transition: top 240ms ease, background 240ms ease, color 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+  background: rgba(28, 18, 33, 0.3);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.site-nav.scrolled {
+.site-nav.scrolled, body:not(.home-active) .site-nav {
   top: 12px;
   color: var(--ink);
-  background: rgba(250, 248, 244, 0.92);
+  background: rgba(250, 249, 246, 0.95);
   border-color: var(--line);
-  box-shadow: 0 18px 60px rgba(47, 20, 54, 0.12);
+  box-shadow: var(--shadow);
 }
 .brand {
   display: flex;
   align-items: center;
-  gap: 13px;
-  min-width: 240px;
+  gap: 12px;
 }
 .brand-mark {
-  width: 76px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   flex: 0 0 auto;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.92);
-  border: 1px solid rgba(216, 196, 154, 0.65);
-  box-shadow: 0 10px 28px rgba(32, 22, 37, 0.14);
-  padding: 4px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--line-gold);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  overflow: hidden;
 }
+.brand:hover .brand-mark { transform: scale(1.04); }
 .brand-mark img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 50%;
 }
 .brand-name {
   display: block;
   font-family: "Playfair Display", serif;
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1;
+  font-weight: 700;
 }
 .brand-line {
   display: block;
-  margin-top: 4px;
-  font-size: 10px;
+  margin-top: 3px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 1.8px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: currentColor;
-  opacity: 0.72;
+  opacity: 0.7;
 }
 .nav-links {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 28px;
   list-style: none;
 }
 .nav-links a {
   font-size: 13px;
   font-weight: 700;
-  opacity: 0.82;
-  transition: opacity 180ms ease, color 180ms ease;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  position: relative;
+  padding: 6px 0;
+  transition: all 0.2s ease;
 }
-.nav-links a:hover { opacity: 1; color: var(--gold); }
-.site-nav.scrolled .nav-links a:hover { color: var(--purple); }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+.nav-links a:hover, .nav-links a.active {
+  opacity: 1;
+  color: var(--gold);
+}
+.nav-links a.active::after {
+  width: 100%;
+}
+.site-nav.scrolled .nav-links a:hover, body:not(.home-active) .site-nav .nav-links a:hover {
+  color: var(--purple);
+}
+.site-nav.scrolled .nav-links a.active, body:not(.home-active) .site-nav .nav-links a.active {
+  color: var(--purple);
+}
+.site-nav.scrolled .nav-links a.active::after, body:not(.home-active) .site-nav .nav-links a.active::after {
+  background: var(--purple);
+}
 .nav-actions { display: flex; gap: 10px; align-items: center; }
 .menu-toggle {
   display: none;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border: 1px solid currentColor;
   border-radius: 50%;
-  background: transparent;
   color: currentColor;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.menu-toggle:hover {
+  background: rgba(255,255,255,0.1);
+}
+.site-nav.scrolled .menu-toggle:hover {
+  background: var(--line);
 }
 
+/* SPA Page View Layout */
+.page-view {
+  display: none;
+}
+.page-view.active {
+  display: block;
+  animation: pageReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.page-view:not(#home-page) {
+  padding-top: 120px;
+  min-height: calc(100vh - 120px);
+}
+@keyframes pageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Home Page */
 .hero {
-  min-height: 100svh;
+  min-height: 100vh;
   position: relative;
   display: grid;
-  align-items: end;
+  align-items: center;
   color: #fff;
   isolation: isolate;
   overflow: hidden;
@@ -220,11 +308,11 @@ h1, h2, h3, h4 {
 }
 .hero-media img {
   transform: scale(1.04);
-  animation: heroDrift 18s ease-in-out infinite alternate;
+  animation: heroDrift 20s ease-in-out infinite alternate;
 }
 @keyframes heroDrift {
   from { transform: scale(1.04) translate3d(0,0,0); }
-  to { transform: scale(1.11) translate3d(-1.6%, -1.2%, 0); }
+  to { transform: scale(1.1) translate3d(-1%, -1%, 0); }
 }
 .hero::after {
   content: "";
@@ -232,164 +320,363 @@ h1, h2, h3, h4 {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(32,22,37,0.80) 0%, rgba(32,22,37,0.50) 42%, rgba(32,22,37,0.18) 100%),
-    linear-gradient(0deg, rgba(32,22,37,0.62) 0%, rgba(32,22,37,0.05) 55%);
+    linear-gradient(90deg, rgba(28,18,33,0.85) 0%, rgba(28,18,33,0.55) 45%, rgba(28,18,33,0.2) 100%),
+    linear-gradient(0deg, rgba(28,18,33,0.7) 0%, rgba(28,18,33,0.1) 60%);
 }
 .hero-inner {
   width: var(--container);
   margin: 0 auto;
-  padding: 170px 0 72px;
+  padding: 130px 0 60px;
   display: grid;
-  grid-template-columns: minmax(0, 0.96fr) minmax(340px, 0.42fr);
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 80px;
-  align-items: end;
+  align-items: center;
 }
 .hero h1 {
-  max-width: 920px;
-  font-size: 72px;
+  max-width: 780px;
+  font-size: clamp(40px, 4.8vw, 68px);
 }
 .hero-sub {
-  max-width: 690px;
-  margin-top: 26px;
-  color: rgba(255,255,255,0.84);
-  font-size: 20px;
+  max-width: 580px;
+  margin-top: 24px;
+  color: rgba(255,255,255,0.8);
+  font-size: 18px;
+  line-height: 1.6;
 }
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-top: 38px;
+  margin-top: 36px;
 }
 .hero-panel {
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(22px);
-  padding: 28px;
-  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 .hero-panel-title {
   color: var(--gold);
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 1.8px;
+  letter-spacing: 2px;
   text-transform: uppercase;
+  display: block;
 }
 .hero-panel strong {
   display: block;
-  margin-top: 14px;
+  margin-top: 12px;
   font-family: "Playfair Display", serif;
-  font-size: 30px;
-  line-height: 1.1;
+  font-size: 26px;
+  line-height: 1.2;
 }
 .hero-panel p {
-  margin-top: 14px;
-  color: rgba(255,255,255,0.78);
+  margin-top: 12px;
+  color: rgba(255,255,255,0.7);
   font-size: 14px;
+  line-height: 1.6;
 }
 .hero-stats {
-  margin-top: 26px;
+  margin-top: 28px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.12);
+  border-radius: 6px;
+  overflow: hidden;
 }
 .hero-stat {
-  background: rgba(32,22,37,0.26);
-  padding: 16px 12px;
+  background: rgba(28,18,33,0.4);
+  padding: 16px 10px;
+  text-align: center;
 }
 .hero-stat span {
   display: block;
   font-family: "Playfair Display", serif;
-  font-size: 25px;
+  font-size: 24px;
+  font-weight: 700;
   color: var(--gold);
+  line-height: 1;
 }
 .hero-stat small {
   display: block;
-  margin-top: 2px;
-  font-size: 11px;
+  margin-top: 4px;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.6);
 }
 
+/* Home Overview & Bento Section */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+.overview-content h2 {
+  font-size: 44px;
+  color: var(--purple);
+  margin-bottom: 24px;
+}
+.overview-content p {
+  color: var(--muted);
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+.overview-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.overview-card-p {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.overview-card-p:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow);
+}
+.overview-card-p svg {
+  color: var(--gold);
+  width: 24px;
+  height: 24px;
+  margin-bottom: 16px;
+}
+.overview-card-p h4 {
+  font-size: 18px;
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+.overview-card-p p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr;
+  grid-auto-rows: minmax(180px, auto);
+  gap: 24px;
+}
+.bento {
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.bento:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+.bento.large {
+  grid-row: span 2;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+}
+.bento.gold {
+  background: linear-gradient(135deg, var(--gold) 0%, #B2915A 100%);
+  color: #fff;
+  border: none;
+}
+.bento.green {
+  background: var(--green);
+  color: #fff;
+  border: none;
+}
+.bento .num {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: 0.9;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.bento h3 { font-size: 24px; margin-bottom: 12px; }
+.bento p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.bento.large p, .bento.green p, .bento.gold p { color: rgba(255,255,255,0.8); }
+
+/* Experiences Page */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.filter-btn {
+  height: 46px;
+  border-radius: 999px;
+  padding: 0 22px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.filter-btn:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.filter-btn.active {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--purple);
+  box-shadow: 0 10px 25px rgba(53, 15, 67, 0.15);
+}
 .experiences-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
 }
 .experience-card {
   position: relative;
-  min-height: 560px;
-  border-radius: 8px;
+  min-height: 520px;
+  border-radius: 12px;
   overflow: hidden;
   color: #fff;
   box-shadow: var(--shadow-soft);
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  transition: all 0.4s ease;
 }
 .experience-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(32,22,37,0.78), rgba(32,22,37,0.10) 58%);
+  background: linear-gradient(to top, rgba(28,18,33,0.92) 0%, rgba(28,18,33,0.4) 50%, rgba(28,18,33,0.1) 100%);
   z-index: 1;
+  transition: opacity 0.4s ease;
 }
-.experience-card img { transition: transform 700ms ease; }
-.experience-card:hover img { transform: scale(1.08); }
-.experience-content {
+.experience-card img {
   position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.experience-card:hover img {
+  transform: scale(1.05);
+}
+.experience-content {
+  position: relative;
   z-index: 2;
-  left: 34px;
-  right: 34px;
-  bottom: 34px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-kicker {
   display: inline-flex;
-  color: var(--gold);
-  font-size: 12px;
+  color: var(--gold-light);
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
+  margin-bottom: 12px;
 }
 .experience-content h3 {
-  margin-top: 12px;
-  font-size: clamp(34px, 3vw, 48px);
+  font-size: 32px;
+  margin-bottom: 12px;
 }
 .experience-content p {
-  max-width: 560px;
-  margin-top: 14px;
-  color: rgba(255,255,255,0.82);
+  max-width: 520px;
+  color: rgba(255,255,255,0.76);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.experience-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease, margin-bottom 0.4s ease;
+  margin-bottom: 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 16px;
+}
+.experience-card:hover .experience-details {
+  max-height: 180px;
+  opacity: 1;
+  margin-bottom: 20px;
+}
+.experience-details h5 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.experience-details ul {
+  list-style: none;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+.experience-details li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.experience-details li::before {
+  content: "•";
+  color: var(--gold);
 }
 .text-link {
-  margin-top: 22px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: #fff;
+  gap: 12px;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
+  color: #fff;
+  transition: color 0.3s ease;
 }
 .text-link::after {
   content: "";
-  width: 38px;
+  width: 32px;
   height: 1px;
   background: var(--gold);
-  transition: width 220ms ease;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.experience-card:hover .text-link::after { width: 58px; }
+.experience-card:hover .text-link::after { width: 50px; }
+.experience-card:hover .text-link { color: var(--gold-light); }
 
+/* Customize Page */
 .journey-shell {
   display: grid;
-  grid-template-columns: minmax(320px, 0.55fr) minmax(0, 1fr);
+  grid-template-columns: 0.35fr 0.65fr;
   gap: 32px;
 }
 .journey-intro {
-  padding: 44px;
+  padding: 40px;
   color: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
   background: var(--purple);
   position: sticky;
-  top: 116px;
-  min-height: 660px;
+  top: 110px;
+  min-height: 580px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -398,41 +685,46 @@ h1, h2, h3, h4 {
 .journey-intro img {
   position: absolute;
   inset: auto 0 0 0;
-  height: 48%;
-  opacity: 0.5;
-  mask-image: linear-gradient(0deg, #000 34%, transparent 100%);
+  height: 44%;
+  opacity: 0.35;
+  mask-image: linear-gradient(0deg, #000 20%, transparent 100%);
+  pointer-events: none;
 }
 .journey-intro h2 {
   position: relative;
-  font-size: clamp(42px, 4vw, 66px);
+  font-size: clamp(32px, 3vw, 48px);
+  margin-top: 16px;
 }
 .journey-intro p {
   position: relative;
-  max-width: 420px;
-  margin-top: 22px;
-  color: rgba(255,255,255,0.78);
+  margin-top: 16px;
+  color: rgba(255,255,255,0.72);
+  font-size: 15px;
 }
 .journey-meta {
   position: relative;
   display: grid;
-  gap: 14px;
-  color: rgba(255,255,255,0.86);
+  gap: 12px;
+  margin-top: 30px;
 }
 .journey-meta div {
-  min-height: 58px;
+  min-height: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.18);
-  font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
 }
-.journey-meta strong { color: var(--gold); }
+.journey-meta strong { color: var(--gold-light); }
 .journey-builder {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: var(--shadow-soft);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .timeline {
   display: grid;
@@ -441,42 +733,65 @@ h1, h2, h3, h4 {
   background: #fff;
 }
 .timeline button {
-  min-height: 108px;
+  min-height: 94px;
   border: 0;
   border-right: 1px solid var(--line);
   background: #fff;
   color: var(--muted);
-  padding: 18px;
+  padding: 16px;
   text-align: left;
-  transition: background 220ms ease, color 220ms ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.timeline button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  transition: all 0.3s ease;
 }
 .timeline button:last-child { border-right: 0; }
 .timeline button.active {
+  background: var(--purple-glow);
+  color: var(--purple);
+}
+.timeline button.active::after {
   background: var(--purple);
-  color: #fff;
+}
+.timeline button.completed::after {
+  background: var(--green);
 }
 .timeline small {
   display: block;
   color: var(--gold);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 1.1px;
+  letter-spacing: 1px;
 }
 .timeline span {
   display: block;
-  margin-top: 9px;
-  font-weight: 800;
-  line-height: 1.25;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 .builder-body {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 1fr 0.85fr;
   gap: 0;
-  min-height: 552px;
+  min-height: 520px;
 }
-.builder-form { padding: 42px; }
+.builder-form {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .builder-visual {
-  min-height: 552px;
+  min-height: 520px;
   position: relative;
   overflow: hidden;
 }
@@ -484,452 +799,984 @@ h1, h2, h3, h4 {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(32,22,37,0.56), rgba(32,22,37,0.02) 54%);
+  background: linear-gradient(to top, rgba(28,18,33,0.7) 0%, rgba(28,18,33,0.1) 60%);
 }
 .visual-caption {
   position: absolute;
   z-index: 2;
-  left: 30px;
-  right: 30px;
-  bottom: 30px;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
   color: #fff;
 }
-.visual-caption h3 { font-size: 36px; }
-.visual-caption p { margin-top: 8px; color: rgba(255,255,255,0.8); font-size: 14px; }
+.visual-caption h3 { font-size: 28px; }
+.visual-caption p { margin-top: 6px; color: rgba(255,255,255,0.75); font-size: 13px; }
 .panel { display: none; }
-.panel.active { display: block; animation: fadeUp 360ms ease both; }
-.panel h3 { font-size: 42px; margin-bottom: 12px; }
-.panel p { color: var(--muted); margin-bottom: 28px; }
+.panel.active { display: block; animation: fadeUp 0.4s ease both; }
+.panel h3 { font-size: 32px; color: var(--purple); margin-bottom: 8px; }
+.panel p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
 .choice-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 12px;
 }
 .choice {
-  min-height: 74px;
+  min-height: 72px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
-  padding: 16px;
+  padding: 14px;
   text-align: left;
-  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .choice:hover, .choice.selected {
   border-color: var(--purple);
-  background: rgba(90, 19, 109, 0.055);
-  transform: translateY(-2px);
+  background: var(--purple-glow);
+  transform: translateY(-1px);
 }
-.choice strong { display: block; font-size: 15px; }
-.choice span { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); }
-.field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.choice.selected {
+  border-width: 2px;
+}
+.choice strong { display: block; font-size: 14px; color: var(--purple); }
+.choice span { display: block; margin-top: 3px; font-size: 11px; color: var(--muted); }
+.field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .field {
   width: 100%;
-  min-height: 56px;
+  min-height: 50px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
   color: var(--ink);
   padding: 0 16px;
   outline: none;
+  transition: all 0.2s ease;
 }
-textarea.field { min-height: 128px; padding-top: 14px; resize: vertical; grid-column: 1 / -1; }
-.field:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(90, 19, 109, 0.08); }
-.slider-row { margin: 16px 0 28px; }
+textarea.field { min-height: 110px; padding-top: 12px; resize: vertical; grid-column: 1 / -1; }
+.field:focus { border-color: var(--purple); box-shadow: 0 0 0 4px var(--purple-glow); }
+.slider-row { margin: 12px 0 20px; }
 .slider-value {
   font-family: "Playfair Display", serif;
   color: var(--purple);
-  font-size: 42px;
+  font-size: 38px;
+  font-weight: 700;
+}
+.slider-tier-info {
+  margin-top: 12px;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  padding: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  min-height: 76px;
+}
+.slider-tier-info strong {
+  display: block;
+  color: var(--purple);
+  margin-bottom: 4px;
 }
 input[type="range"] {
   width: 100%;
   accent-color: var(--purple);
+  height: 6px;
+  background: var(--line);
+  border-radius: 99px;
+  outline: none;
+}
+.builder-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
 }
 
+/* Success Seal */
+.success-seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 10px;
+}
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--green);
+  color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(28, 138, 51, 0.25);
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes scaleIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.success-seal h4 {
+  font-size: 26px;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+.success-seal p {
+  color: var(--muted);
+  max-width: 380px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Custom Spinner */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--line);
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  margin-bottom: 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Destinations Page */
 .destination-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.48fr);
-  gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 .featured-destination {
-  min-height: 650px;
-  border-radius: 8px;
+  min-height: 520px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   color: #fff;
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
 }
 .featured-destination::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(32,22,37,0.82), rgba(32,22,37,0.08) 62%);
+  background: linear-gradient(to top, rgba(28,18,33,0.9) 0%, rgba(28,18,33,0.3) 50%, rgba(28,18,33,0.05) 100%);
+  z-index: 1;
+}
+.featured-destination img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.featured-destination:hover img {
+  transform: scale(1.04);
 }
 .featured-copy {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  left: 44px;
-  right: 44px;
-  bottom: 44px;
 }
-.featured-copy h3 { font-size: clamp(42px, 4vw, 66px); }
-.featured-copy p { max-width: 640px; margin-top: 16px; color: rgba(255,255,255,0.82); }
-.destination-carousel {
-  display: grid;
-  gap: 20px;
+.featured-copy h3 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  margin-bottom: 12px;
 }
-.destination-card {
-  display: grid;
-  grid-template-columns: 154px 1fr;
-  min-height: 156px;
+.featured-copy p {
+  max-width: 540px;
+  color: rgba(255,255,255,0.8);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.explorer-guide {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 220ms ease, box-shadow 220ms ease;
-}
-.destination-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
-.destination-card-content { padding: 20px; }
-.destination-card h4 { font-size: 26px; }
-.destination-card p { margin-top: 8px; color: var(--muted); font-size: 14px; line-height: 1.5; }
-.destination-controls { display: flex; gap: 10px; margin-top: 12px; }
-.icon-btn {
-  width: 52px;
-  height: 52px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: #fff;
-  color: var(--purple);
-  display: grid;
-  place-items: center;
-  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
-}
-.icon-btn:hover { transform: translateY(-2px); background: var(--purple); color: #fff; }
-.icon-btn svg { width: 19px; height: 19px; }
-
-.bento-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr 0.8fr;
-  grid-auto-rows: 220px;
-  gap: 32px;
-}
-.bento {
-  border-radius: 8px;
-  background: #fff;
-  border: 1px solid var(--line);
-  padding: 34px;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
 }
-.bento.large { grid-row: span 2; background: var(--purple); color: #fff; }
-.bento.gold { background: var(--gold); }
-.bento.green { background: var(--green); color: #fff; }
-.bento .num {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(46px, 5vw, 84px);
-  line-height: 0.9;
+.guide-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
 }
-.bento h3 { font-size: 28px; }
-.bento p { color: var(--muted); font-size: 14px; }
-.bento.large p, .bento.green p { color: rgba(255,255,255,0.78); }
+.guide-tab-btn {
+  height: 48px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.guide-tab-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+.guide-tab-btn:hover { color: var(--purple); }
+.guide-tab-btn.active {
+  color: var(--purple);
+  font-weight: 800;
+}
+.guide-tab-btn.active::after {
+  background: var(--purple);
+}
+.guide-content {
+  animation: fadeUp 0.4s ease both;
+}
+.guide-meta-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.guide-meta-col small {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.guide-meta-col strong {
+  display: block;
+  font-size: 14px;
+  color: var(--purple);
+}
+.guide-bullets {
+  margin-bottom: 28px;
+}
+.guide-bullets h5 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.guide-bullets ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.guide-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.guide-bullets li::before {
+  content: "✦";
+  color: var(--gold);
+  font-size: 10px;
+  margin-top: 4px;
+}
 
+/* World Map Page */
 .map-wrap {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.36fr);
+  grid-template-columns: 1fr 0.35fr;
   gap: 32px;
 }
 .world-map {
-  min-height: 620px;
-  border-radius: 8px;
-  background: #fff;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
-  padding: 34px;
+  min-height: 520px;
+  border-radius: 12px;
+  background: #18111D; /* Sleek dark theme */
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: var(--shadow);
+  padding: 30px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.world-map svg { width: 100%; height: 100%; min-height: 540px; }
-.route {
+.world-map svg {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+}
+.map-background {
+  fill: #221829;
+  stroke: rgba(255,255,255,0.04);
+  stroke-width: 1;
+}
+.route-path {
   fill: none;
   stroke: var(--gold);
   stroke-width: 2;
-  stroke-dasharray: 7 9;
-  animation: dash 18s linear infinite;
+  stroke-linecap: round;
+  stroke-dasharray: 6 6;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-@keyframes dash { to { stroke-dashoffset: -260; } }
-.pin { fill: var(--purple); stroke: #fff; stroke-width: 4; cursor: pointer; transition: transform 180ms ease; transform-origin: center; }
-.pin:hover { transform: scale(1.28); fill: var(--green); }
+.route-path.active {
+  opacity: 0.8;
+  animation: dashRun 3s linear infinite;
+}
+@keyframes dashRun {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+.pin-g {
+  cursor: pointer;
+}
+.pin-circle {
+  fill: var(--purple-light);
+  stroke: #fff;
+  stroke-width: 2.5;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+.pin-pulse {
+  fill: var(--gold);
+  opacity: 0.3;
+  animation: pulse 2s infinite ease-out;
+  transform-origin: center;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.pin-g:hover .pin-circle, .pin-g.active .pin-circle {
+  fill: var(--gold);
+  transform: scale(1.3);
+}
 .map-card {
   background: var(--purple);
   color: #fff;
+  border-radius: 12px;
+  padding: 36px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+}
+.map-card h3 { font-size: 32px; color: #fff; margin-bottom: 8px; }
+.map-note {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.map-list { display: grid; gap: 10px; margin-top: 24px; }
+.map-list button {
+  min-height: 56px;
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 8px;
-  padding: 34px;
-  min-height: 620px;
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  padding: 12px 16px;
+  text-align: left;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 500;
+}
+.map-list button.active {
+  border-color: var(--gold);
+  background: rgba(194, 164, 118, 0.15);
+  font-weight: 700;
+}
+
+/* Contact & FAQ Page */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.42fr 0.58fr;
+  gap: 32px;
+}
+.contact-panel {
+  padding: 40px;
+  border-radius: 12px;
+  background: var(--purple);
+  color: #fff;
+  min-height: 560px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.map-card h3 { font-size: 42px; }
-.map-list { display: grid; gap: 14px; margin-top: 30px; }
-.map-list button {
-  min-height: 66px;
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-  padding: 14px;
-  text-align: left;
+.contact-panel h2 { font-size: clamp(34px, 3.5vw, 50px); }
+.contact-panel p { margin-top: 14px; color: rgba(255,255,255,0.72); font-size: 15px; }
+.contact-methods { display: grid; gap: 14px; margin-top: 28px; }
+.contact-method {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.12);
 }
-.map-list button.active { border-color: var(--gold); background: rgba(216,196,154,0.16); }
-.map-note {
-  color: rgba(255,255,255,0.74);
+.contact-method small {
+  display: block;
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.contact-method strong { display: block; margin-top: 4px; font-size: 16px; }
+.contact-form {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
+}
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.form-grid label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 700; }
+.form-grid .full { grid-column: 1 / -1; }
+.form-grid input, .form-grid select, .form-grid textarea {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 14px;
+  color: var(--ink);
+  background: #fff;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.form-grid textarea { min-height: 120px; padding-top: 12px; resize: vertical; }
+.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px var(--purple-glow);
+}
+.form-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+
+/* Accordion FAQ */
+.faq-section {
+  margin-top: 56px;
+}
+.faq-section h3 {
+  font-size: 28px;
+  color: var(--purple);
+  margin-bottom: 24px;
+  text-align: center;
+}
+.faq-grid {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.faq-trigger {
+  width: 100%;
+  min-height: 58px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--purple);
+  text-align: left;
+  transition: background 0.2s ease;
+}
+.faq-trigger:hover {
+  background: var(--purple-glow);
+}
+.faq-trigger span {
+  transition: transform 0.3s ease;
+  font-size: 18px;
+  color: var(--gold);
+}
+.faq-item.active {
+  border-color: var(--gold);
+}
+.faq-item.active .faq-trigger span {
+  transform: rotate(45deg);
+}
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0 20px;
   font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.faq-item.active .faq-content {
+  max-height: 160px;
+  padding-bottom: 16px;
 }
 
-.testimonials {
+/* Secure Booking & Payment Page */
+.payment-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+}
+.payment-summary {
+  padding: 40px;
+  color: #fff;
+  border-radius: 12px;
+  background: var(--purple);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: var(--shadow);
+}
+.payment-summary h3 { font-size: 36px; }
+.payment-summary p { color: rgba(255,255,255,0.7); font-size: 14px; }
+.payment-lines { display: grid; gap: 10px; margin-top: 20px; }
+.payment-lines div { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 12px; font-size: 14px; }
+.payment-lines div.total { border-top: 2px solid var(--gold-light); font-size: 18px; font-weight: 700; color: var(--gold-light); }
+.payment-portal {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
+}
+.payment-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.payment-tab-btn {
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.payment-tab-btn.active {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--purple);
+}
+.payment-view-section {
+  display: none;
+  animation: fadeUp 0.3s ease both;
+}
+.payment-view-section.active {
+  display: block;
+}
+
+/* Card Visualizer styling */
+.card-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 320px;
+  height: 190px;
+  margin: 0 auto 24px;
+}
+.credit-card-v {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #fff;
+  font-family: monospace;
+}
+.credit-card-v.flipped {
+  transform: rotateY(180deg);
+}
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  padding: 20px;
+  background: linear-gradient(135deg, #1C1221 0%, #350F43 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #350F43 0%, #1C1221 100%);
+  padding: 20px 0;
+}
+.card-chip {
+  width: 40px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+  border-radius: 4px;
+}
+.card-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold-light);
+  text-align: right;
+}
+.card-number-v {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-top: 14px;
+}
+.card-row-v {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 12px;
+}
+.card-holder-v {
+  text-transform: uppercase;
+}
+.card-magnetic-strip {
+  height: 36px;
+  background: #000;
+  width: 100%;
+  margin-top: 10px;
+}
+.card-signature-area {
+  margin: 16px 20px 0;
+  background: #fff;
+  color: #000;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  font-size: 12px;
+}
+.security-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.security-indicators span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* UPI QR style */
+.upi-qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 24px;
+}
+.qr-placeholder {
+  width: 160px;
+  height: 160px;
+  border: 4px solid #fff;
+  box-shadow: var(--shadow-soft);
+  background: #fff;
+  padding: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qr-placeholder svg {
+  width: 100%;
+  height: 100%;
+}
+.qr-timer {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--purple);
+  margin-top: 12px;
+}
+
+/* Net banking bank options */
+.bank-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.bank-option {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--purple);
+  transition: all 0.2s ease;
+}
+.bank-option:hover, .bank-option.selected {
+  background: var(--purple-glow);
+  border-color: var(--purple);
+}
+
+/* Receipt Success Modal / Voucher */
+.receipt-box {
+  background: #fff;
+  border: 1px solid var(--line-gold);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow);
+  max-width: 520px;
+  margin: 0 auto;
+  background-image: radial-gradient(circle at 100% 150px, transparent 12px, #fff 12px), radial-gradient(circle at 0 150px, transparent 12px, #fff 12px);
+  position: relative;
+}
+.receipt-header {
+  text-align: center;
+  border-bottom: 1px dashed var(--line-gold);
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+.receipt-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--purple);
+}
+.receipt-kicker {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+}
+.receipt-body {
+  display: grid;
+  gap: 14px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+}
+.receipt-row strong {
+  color: var(--ink);
+}
+.receipt-row.total {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--purple);
+}
+.receipt-footer {
+  text-align: center;
+  border-top: 1px dashed var(--line-gold);
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+/* Common Animations */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Testimonials Slider style for Home page */
+.testimonials-section {
+  padding-bottom: 120px;
+}
+.testimonials-slider {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
 }
 .review-card {
-  min-height: 430px;
-  border-radius: 8px;
+  min-height: 380px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   color: #fff;
   box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
 }
 .review-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(32,22,37,0.76), rgba(32,22,37,0.15));
+  background: linear-gradient(to top, rgba(28,18,33,0.85) 0%, rgba(28,18,33,0.2) 60%);
+  z-index: 1;
+}
+.review-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: transform 0.8s ease;
+}
+.review-card:hover img {
+  transform: scale(1.03);
 }
 .review-content {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  left: 32px;
-  right: 32px;
-  bottom: 32px;
-  padding: 26px;
-  border: 1px solid rgba(255,255,255,0.20);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 8px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
+  padding: 24px;
 }
-.review-content p { font-family: "Playfair Display", serif; font-size: 28px; line-height: 1.22; }
-.reviewer { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 24px; font-size: 14px; }
-.stars { color: var(--gold); letter-spacing: 3px; }
+.review-content p { font-family: "Playfair Display", serif; font-size: 22px; line-height: 1.3; font-style: italic; margin-bottom: 16px; }
+.reviewer { display: flex; align-items: center; justify-content: space-between; gap: 14px; font-size: 13px; font-weight: 600; }
+.stars { color: var(--gold-light); letter-spacing: 2px; }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: minmax(320px, 0.48fr) minmax(0, 1fr);
-  gap: 32px;
-}
-.contact-panel {
-  padding: 44px;
-  border-radius: 8px;
-  background: var(--purple);
-  color: #fff;
-  min-height: 650px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.contact-panel h2 { font-size: clamp(44px, 4vw, 66px); }
-.contact-panel p { margin-top: 18px; color: rgba(255,255,255,0.78); }
-.contact-methods { display: grid; gap: 16px; }
-.contact-method {
-  padding-top: 18px;
-  border-top: 1px solid rgba(255,255,255,0.18);
-}
-.contact-method small {
-  display: block;
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-}
-.contact-method strong { display: block; margin-top: 6px; font-size: 18px; }
-.contact-form {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 44px;
-  box-shadow: var(--shadow-soft);
-}
-.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.form-grid label { display: grid; gap: 8px; color: var(--muted); font-size: 13px; font-weight: 700; }
-.form-grid .full { grid-column: 1 / -1; }
-.form-grid input, .form-grid select, .form-grid textarea {
-  min-height: 58px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 0 16px;
-  color: var(--ink);
-  background: #fff;
-  outline: none;
-}
-.form-grid textarea { min-height: 160px; padding-top: 14px; resize: vertical; }
-.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus {
-  border-color: var(--purple);
-  box-shadow: 0 0 0 4px rgba(90, 19, 109, 0.08);
-}
-.form-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
-
+/* Footer */
 .footer {
-  padding: 54px 0;
-  color: rgba(255,255,255,0.70);
-  background: var(--ink);
+  padding: 60px 0;
+  color: rgba(255,255,255,0.6);
+  background: #150E19;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 .footer-inner {
   width: var(--container);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  gap: 24px;
-  align-items: center;
-}
-
-.payment-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background: rgba(32,22,37,0.72);
-  backdrop-filter: blur(18px);
-}
-.payment-overlay.open { display: flex; }
-.payment-modal {
-  width: min(1080px, 100%);
-  max-height: min(860px, calc(100svh - 48px));
-  display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  border-radius: 8px;
-  overflow: auto;
-  background: #fff;
-  box-shadow: 0 34px 120px rgba(0,0,0,0.36);
-}
-.payment-summary {
-  padding: 36px;
-  color: #fff;
-  background: var(--purple);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   gap: 32px;
+  align-items: center;
 }
-.payment-summary h3 { font-size: 42px; }
-.payment-summary p { color: rgba(255,255,255,0.76); }
-.payment-lines { display: grid; gap: 12px; }
-.payment-lines div { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 12px; }
-.payment-form { padding: 36px; }
-.close-modal {
-  float: right;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--purple);
+.footer .brand-mark {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+}
+.footer p {
+  font-size: 14px;
 }
 
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity 700ms ease, transform 700ms ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
+/* Media Queries for Responsiveness */
 @media (max-width: 1180px) {
   :root { --container: calc(100vw - 48px); }
   .hero h1 { font-size: 48px; }
-  .hero-inner, .section-head, .journey-shell, .destination-layout, .map-wrap, .contact-grid {
+  .hero-inner, .section-head, .journey-shell, .destination-layout, .map-wrap, .contact-grid, .payment-layout, .overview-grid {
     grid-template-columns: 1fr;
   }
-  .hero-inner { gap: 42px; }
-  .hero-panel { max-width: 620px; }
-  .journey-intro { position: relative; top: 0; min-height: 520px; }
+  .hero-inner { gap: 40px; }
+  .hero-panel { max-width: 100%; }
+  .journey-intro { position: relative; top: 0; min-height: 420px; }
   .bento-grid { grid-template-columns: repeat(2, 1fr); }
   .builder-body { grid-template-columns: 1fr; }
-  .builder-visual { min-height: 430px; }
+  .builder-visual { min-height: 380px; }
   .map-card, .world-map { min-height: auto; }
 }
 
 @media (max-width: 820px) {
   :root { --container: calc(100vw - 32px); }
-  body { font-size: 16px; }
-  .section { padding: 82px 0; }
+  body { font-size: 15px; }
+  .section { padding: 70px 0; }
   .site-nav {
     top: 10px;
-    width: calc(100vw - 24px);
+    width: calc(100vw - 20px);
     height: auto;
-    min-height: 70px;
-    border-radius: 28px;
-    align-items: flex-start;
-    padding: 10px 12px;
-    flex-wrap: wrap;
+    min-height: 64px;
+    border-radius: 20px;
+    align-items: center;
+    padding: 10px 14px;
   }
   .brand { min-width: 0; }
-  .brand-mark { width: 64px; height: 42px; }
-  .brand-name { font-size: 17px; }
+  .brand-mark { width: 38px; height: 38px; }
+  .brand-name { font-size: 16px; }
   .nav-links {
     display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
     width: 100%;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 8px 6px 12px;
+    padding: 10px;
+    background: rgba(250, 249, 246, 0.98);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    z-index: 100;
+  }
+  body.home-active .nav-links {
+    background: rgba(28, 18, 33, 0.98);
+    border-color: rgba(255,255,255,0.1);
   }
   .nav-links.open { display: flex; }
-  .nav-links a { display: block; min-height: 46px; padding: 12px; }
-  .nav-actions .btn { display: none; }
-  .menu-toggle { display: grid; place-items: center; }
-  .hero-inner { padding: 140px 0 42px; grid-template-columns: 1fr; }
-  .hero h1 { font-size: 36px; }
-  .hero-sub { font-size: 17px; }
+  .nav-links a {
+    display: block;
+    padding: 12px;
+    color: var(--ink);
+  }
+  body.home-active .nav-links a {
+    color: #fff;
+  }
+  .nav-links a::after { display: none; }
+  .nav-actions .btn-primary { display: none; } /* Hide Payment button on nav in mobile */
+  .menu-toggle { display: flex; }
+  .hero-inner { padding: 120px 0 30px; }
+  .hero h1 { font-size: 34px; }
+  .hero-sub { font-size: 16px; }
   .hero-actions .btn { width: 100%; }
   .hero-stats { grid-template-columns: 1fr; }
-  .section-head { gap: 24px; margin-bottom: 42px; }
-  .section-title { font-size: 38px; }
-  .experiences-grid, .testimonials, .bento-grid {
+  .section-head { gap: 16px; margin-bottom: 36px; }
+  .section-title { font-size: 32px; }
+  .experiences-grid, .testimonials-slider, .bento-grid, .overview-preview {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
-  .experience-card { min-height: 460px; }
-  .experience-content, .featured-copy { left: 24px; right: 24px; bottom: 24px; }
-  .journey-intro, .builder-form, .contact-panel, .contact-form { padding: 28px; }
+  .experience-card { min-height: 420px; padding: 24px; }
+  .experience-content h3 { font-size: 26px; }
+  .journey-intro, .builder-form, .contact-panel, .contact-form, .featured-destination, .explorer-guide { padding: 24px; }
   .timeline {
     grid-template-columns: 1fr;
   }
   .timeline button {
-    min-height: 74px;
+    min-height: 60px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
-  .choice-grid, .field-grid, .form-grid { grid-template-columns: 1fr; }
-  .destination-card { grid-template-columns: 1fr; }
-  .destination-card img { height: 220px; }
-  .featured-destination { min-height: 520px; }
-  .bento { min-height: 200px; }
-  .world-map { padding: 18px; }
-  .world-map svg { min-height: 360px; }
-  .review-content { left: 18px; right: 18px; bottom: 18px; padding: 20px; }
-  .review-content p { font-size: 23px; }
-  .footer-inner { flex-direction: column; align-items: flex-start; }
-  .payment-modal { grid-template-columns: 1fr; }
+  .choice-grid, .field-grid, .form-grid, .bank-grid { grid-template-columns: 1fr; }
+  .featured-destination { min-height: 420px; }
+  .bento { min-height: 180px; }
+  .world-map { padding: 12px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; text-align: left; }
 }
 </style>
 </head>
-<body>
+<body class="home-active">
+
 <nav class="site-nav" id="siteNav">
-  <a class="brand" href="#top" aria-label="TGV Worldwide Holidays home">
+  <a class="brand" href="#home" aria-label="TGV Worldwide Holidays home">
     <span class="brand-mark"><img src="assets/tgv-logo.jpeg" alt="TGV Worldwide Holidays logo"></span>
     <span><span class="brand-name">TGV Worldwide Holidays</span><span class="brand-line">Luxury Travel Concierge</span></span>
   </a>
@@ -941,389 +1788,1048 @@ input[type="range"] {
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <button class="btn btn-primary" onclick="openPayment()">Secure Trip</button>
+    <a href="#payment" class="btn btn-primary">Secure Trip</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
 </nav>
 
 <main id="top">
-  <section class="hero">
-    <div class="hero-media">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=88" alt="Luxury resort terrace overlooking a serene destination">
-    </div>
-    <div class="hero-inner">
-      <div class="reveal">
-        <span class="eyebrow">Bespoke journeys worldwide</span>
-        <h1>Private holidays crafted with the discretion of a luxury concierge.</h1>
-        <p class="hero-sub">TGV designs seamless international escapes with handpicked resorts, expert visa guidance, private transfers, and travel support from the first idea to the final flight home.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#journey">Design My Journey</a>
-          <a class="btn btn-secondary" href="#destinations">Explore Destinations</a>
-        </div>
-      </div>
-      <aside class="hero-panel reveal">
-        <span class="hero-panel-title">Signature escape</span>
-        <strong>Maldives overwater retreat, curated for two.</strong>
-        <p>Business class flights, villa selection, private dining, seaplane transfers, and full documentation support.</p>
-        <div class="hero-stats">
-          <div class="hero-stat"><span>15+</span><small>Years</small></div>
-          <div class="hero-stat"><span>50+</span><small>Countries</small></div>
-          <div class="hero-stat"><span>24/7</span><small>Care</small></div>
-        </div>
-      </aside>
-    </div>
-  </section>
 
-  <section class="section" id="experiences">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Experiences</span>
-          <h2 class="section-title">Travel styles with room to breathe.</h2>
+  <!-- ==================== HOME PAGE VIEW ==================== -->
+  <div id="home-page" class="page-view active">
+    <section class="hero">
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=88" alt="Luxury resort terrace overlooking a serene destination">
+      </div>
+      <div class="hero-inner">
+        <div class="reveal">
+          <span class="eyebrow" style="color: var(--gold-light);">Bespoke journeys worldwide</span>
+          <h1 style="color: #fff;">Private holidays crafted with the discretion of a luxury concierge.</h1>
+          <p class="hero-sub">TGV designs seamless international escapes with handpicked resorts, expert visa guidance, private transfers, and travel support from the first idea to the final flight home.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#journey">Design My Journey</a>
+            <a class="btn btn-secondary" href="#destinations">Explore Destinations</a>
+          </div>
         </div>
-        <p class="section-copy">Large-format experiences replace crowded package cards, giving each journey the space and visual weight a premium travel decision deserves.</p>
-      </div>
-      <div class="experiences-grid">
-        <article class="experience-card reveal">
-          <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1400&q=86" alt="Overwater villas in the Maldives">
-          <div class="experience-content">
-            <span class="card-kicker">Island Sanctuaries</span>
-            <h3>Private villas and quiet blue horizons.</h3>
-            <p>Overwater suites, seaplane arrivals, candlelit sandbank dinners, and reef-led days shaped around your pace.</p>
-            <span class="text-link">Explore islands</span>
+        <aside class="hero-panel reveal">
+          <span class="hero-panel-title">Signature escape</span>
+          <strong style="color: #fff;">Maldives overwater retreat, curated for two.</strong>
+          <p>Business class flights, villa selection, private dining, seaplane transfers, and full documentation support.</p>
+          <div class="hero-stats">
+            <div class="hero-stat"><span>15+</span><small>Years</small></div>
+            <div class="hero-stat"><span>50+</span><small>Countries</small></div>
+            <div class="hero-stat"><span>24/7</span><small>Care</small></div>
           </div>
-        </article>
-        <article class="experience-card reveal">
-          <img src="https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1400&q=86" alt="Luxury European city travel">
-          <div class="experience-content">
-            <span class="card-kicker">Grand Europe</span>
-            <h3>Hotels, trains, galleries, and hidden tables.</h3>
-            <p>Paris, Swiss Alps, Lake Como, and beyond with polished routing, private guides, and rare room categories.</p>
-            <span class="text-link">Explore Europe</span>
-          </div>
-        </article>
-        <article class="experience-card reveal">
-          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1400&q=86" alt="Safari landscape with luxury travel feeling">
-          <div class="experience-content">
-            <span class="card-kicker">Wild Luxury</span>
-            <h3>Safari lodges and once-in-a-lifetime terrain.</h3>
-            <p>Game drives, conservation-led stays, helicopter transfers, and intimate camps with expert naturalists.</p>
-            <span class="text-link">Explore safari</span>
-          </div>
-        </article>
-        <article class="experience-card reveal">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=86" alt="Luxury beach escape">
-          <div class="experience-content">
-            <span class="card-kicker">Celebrations</span>
-            <h3>Honeymoons, anniversaries, and family milestones.</h3>
-            <p>Personalized touches, private dining, celebration amenities, and an itinerary that feels unmistakably yours.</p>
-            <span class="text-link">Plan a milestone</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section alt" id="journey">
-    <div class="container">
-      <div class="journey-shell">
-        <aside class="journey-intro reveal">
-          <div>
-            <span class="eyebrow" style="color:#fff">Customize Journey</span>
-            <h2>Your holiday, built like a private commission.</h2>
-            <p>Choose the mood, rhythm, destination, stay style, and service layer. The builder gives TGV a clear brief before the first consultation.</p>
-          </div>
-          <div class="journey-meta">
-            <div><span>Response window</span><strong>2 hours</strong></div>
-            <div><span>Planning style</span><strong>Human-led</strong></div>
-            <div><span>Support</span><strong>End to end</strong></div>
-          </div>
-          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=84" alt="Luxury hotel suite">
         </aside>
-        <div class="journey-builder reveal">
-          <div class="timeline" id="timeline">
-            <button class="active" data-step="0"><small>01</small><span>Destination Mood</span></button>
-            <button data-step="1"><small>02</small><span>Stay & Pace</span></button>
-            <button data-step="2"><small>03</small><span>Travel Dates</span></button>
-            <button data-step="3"><small>04</small><span>Investment</span></button>
-            <button data-step="4"><small>05</small><span>Personal Touches</span></button>
+      </div>
+    </section>
+
+    <!-- Overview / Brand Value Section on Homepage -->
+    <section class="section">
+      <div class="container">
+        <div class="overview-grid reveal">
+          <div class="overview-content">
+            <span class="eyebrow">A New Standard</span>
+            <h2>We handle the layout, so you can enjoy the landing.</h2>
+            <p>Every holiday is shaped directly by our team. No auto-generated schedules, no crowded tour groups. Just direct connections with premier hotels, fast-track visa processing, and flights aligned with your preferred pace.</p>
+            <a href="#journey" class="btn btn-primary">Start Customizing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;margin-left:6px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
-          <div class="builder-body">
-            <div class="builder-form">
-              <div class="panel active" data-panel="0">
-                <h3>Start with the feeling.</h3>
-                <p>Select the kind of escape you want TGV to design.</p>
-                <div class="choice-grid">
-                  <button class="choice selected"><strong>Ocean Retreat</strong><span>Maldives, Seychelles, Mauritius</span></button>
-                  <button class="choice"><strong>European Grandeur</strong><span>France, Italy, Switzerland</span></button>
-                  <button class="choice"><strong>Culture & Cuisine</strong><span>Japan, Turkey, Spain</span></button>
-                  <button class="choice"><strong>Wild Luxury</strong><span>Kenya, South Africa, Tanzania</span></button>
-                </div>
-              </div>
-              <div class="panel" data-panel="1">
-                <h3>Choose your rhythm.</h3>
-                <p>Shape the stay style and pace of the itinerary.</p>
-                <div class="choice-grid">
-                  <button class="choice selected"><strong>Ultra Relaxed</strong><span>Long stays and slow mornings</span></button>
-                  <button class="choice"><strong>Balanced</strong><span>Comfort with curated discovery</span></button>
-                  <button class="choice"><strong>Immersive</strong><span>Guides, dining, and rare access</span></button>
-                  <button class="choice"><strong>Family Seamless</strong><span>Kid-friendly luxury and support</span></button>
-                </div>
-              </div>
-              <div class="panel" data-panel="2">
-                <h3>Set the window.</h3>
-                <p>Share approximate dates and traveler count.</p>
-                <div class="field-grid">
-                  <input class="field" type="month" aria-label="Travel month">
-                  <select class="field" aria-label="Duration"><option>5-7 nights</option><option>8-10 nights</option><option>11-14 nights</option><option>15+ nights</option></select>
-                  <select class="field" aria-label="Travelers"><option>2 travelers</option><option>Family of 4</option><option>Group of 6+</option><option>Corporate retreat</option></select>
-                  <select class="field" aria-label="Flight class"><option>Business class preferred</option><option>Premium economy</option><option>First class</option><option>Flights not required</option></select>
-                </div>
-              </div>
-              <div class="panel" data-panel="3">
-                <h3>Define the investment.</h3>
-                <p>A realistic range helps us protect quality while designing options.</p>
-                <div class="slider-row">
-                  <div class="slider-value" id="budgetValue">Rs. 6.0L</div>
-                  <input type="range" min="200000" max="1800000" value="600000" step="50000" id="budgetSlider" aria-label="Budget">
-                </div>
-                <div class="choice-grid">
-                  <button class="choice selected"><strong>Best value luxury</strong><span>Premium stays and smart routing</span></button>
-                  <button class="choice"><strong>No-compromise</strong><span>Top rooms and private access</span></button>
-                </div>
-              </div>
-              <div class="panel" data-panel="4">
-                <h3>Add the details.</h3>
-                <p>Tell us what would make the trip feel personal.</p>
-                <div class="field-grid">
-                  <input class="field" type="text" placeholder="Name">
-                  <input class="field" type="tel" placeholder="Phone">
-                  <textarea class="field" placeholder="Anniversary dinner, visa assistance, dietary needs, room preferences, private transfers..."></textarea>
-                </div>
-                <button class="btn btn-primary" style="margin-top:22px" onclick="document.getElementById('contact').scrollIntoView()">Request Consultation</button>
-              </div>
+          <div class="overview-preview">
+            <div class="overview-card-p">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <h4>Visa Assurance</h4>
+              <p>Documentation verification and priority slots managed end-to-end.</p>
             </div>
-            <div class="builder-visual">
-              <img id="journeyImage" src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1100&q=84" alt="Journey inspiration">
-              <div class="visual-caption">
-                <h3 id="journeyTitle">Ocean Retreat</h3>
-                <p id="journeyText">Water villas, private transfers, and soft, unhurried days.</p>
-              </div>
+            <div class="overview-card-p">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              <h4>Elite Properties</h4>
+              <p>Direct bookings at verified seaview villas and private estates.</p>
+            </div>
+            <div class="overview-card-p">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <h4>Active Concierge</h4>
+              <p>24/7 flight monitoring and dynamic transfer alterations.</p>
+            </div>
+            <div class="overview-card-p">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v4M3 5h4M6 17v4M4 19h4M13 5l2 2-2 2M18 10l3 3-3 3M12 12l6-6-6-6-6 6 6 6z"/></svg>
+              <h4>Rare Access</h4>
+              <p>Private guides, private chefs, and closed gallery entries.</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="destinations">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Destinations</span>
-          <h2 class="section-title">A larger, richer destination showcase.</h2>
-        </div>
-        <p class="section-copy">Each country is framed as a story, not a thumbnail. The carousel keeps browsing focused while the featured panel creates a true luxury first impression.</p>
-      </div>
-      <div class="destination-layout">
-        <article class="featured-destination reveal">
-          <img id="featuredImage" src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1500&q=86" alt="Featured luxury destination">
-          <div class="featured-copy">
-            <span class="card-kicker" id="featuredKicker">Featured Country</span>
-            <h3 id="featuredTitle">Maldives</h3>
-            <p id="featuredText">A private-island rhythm of overwater villas, reef swims, seaplanes, and sunset dining for travelers who want quiet luxury.</p>
-          </div>
-        </article>
-        <div>
-          <div class="destination-carousel" id="destinationList"></div>
-          <div class="destination-controls">
-            <button class="icon-btn" id="prevDestination" aria-label="Previous destination"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M15 18l-6-6 6-6"/></svg></button>
-            <button class="icon-btn" id="nextDestination" aria-label="Next destination"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M9 18l6-6-6-6"/></svg></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section alt" id="why">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Why TGV</span>
-          <h2 class="section-title">Proof points with premium presence.</h2>
-        </div>
-        <p class="section-copy">A confident bento grid gives the brand credibility without crowding the screen with small, forgettable cards.</p>
-      </div>
-      <div class="bento-grid">
-        <article class="bento large reveal"><div class="num">15+</div><div><h3>Years designing international holidays.</h3><p>Experienced consultants, destination knowledge, and supplier relationships built over time.</p></div></article>
-        <article class="bento gold reveal"><div class="num">50+</div><div><h3>Destinations</h3><p>From island resorts to multi-country Europe routes.</p></div></article>
-        <article class="bento reveal"><div class="num">10K+</div><div><h3>Travelers</h3><p>Families, couples, groups, and celebration trips.</p></div></article>
-        <article class="bento green reveal"><div class="num">24/7</div><div><h3>Support</h3><p>Help through flights, hotels, transfers, and emergencies.</p></div></article>
-        <article class="bento reveal"><div class="num">Visa</div><div><h3>Assistance</h3><p>Documentation guidance and destination-specific readiness.</p></div></article>
-        <article class="bento reveal"><div class="num">Pro</div><div><h3>Luxury Experts</h3><p>Room category advice, occasion planning, and curated extras.</p></div></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="testimonials">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Traveler Notes</span>
-          <h2 class="section-title">Reviews that feel personal and polished.</h2>
-        </div>
-        <p class="section-copy">Large image-backed testimonials bring warmth and trust while keeping the visual language high-end.</p>
-      </div>
-      <div class="testimonials">
-        <article class="review-card reveal">
-          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1000&q=84" alt="Luxury traveler portrait">
-          <div class="review-content">
-            <p>"Every transfer, dinner, and villa detail was handled before we even had to ask."</p>
-            <div class="reviewer"><strong>Rhea and Karan, Maldives</strong><span class="stars">★★★★★</span></div>
-          </div>
-        </article>
-        <article class="review-card reveal">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=84" alt="Traveler portrait">
-          <div class="review-content">
-            <p>"TGV made Switzerland feel effortless, with hotels and routes we would never have found alone."</p>
-            <div class="reviewer"><strong>Meera Shah, Europe</strong><span class="stars">★★★★★</span></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section alt" id="map">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">World Map</span>
-          <h2 class="section-title">Routes, countries, and highlights at a glance.</h2>
-        </div>
-        <p class="section-copy">A professional interactive map makes the global coverage tangible without relying on a generic map embed.</p>
-      </div>
-      <div class="map-wrap">
-        <div class="world-map reveal">
-          <svg viewBox="0 0 1000 560" role="img" aria-label="Interactive world travel map">
-            <path d="M126 180c35-30 80-42 128-31 31 7 53 28 77 48 21 18 48 22 76 19 36-5 68 10 91 36 20 23 46 35 76 32 43-5 70-35 111-44 45-10 95 7 123 42 20 26 49 44 83 47" class="route"/>
-            <path d="M112 298c54-8 98 14 134 51 31 33 65 47 110 40 44-7 79-34 122-45 50-14 98 7 132 45 36 39 78 50 130 38" class="route"/>
-            <ellipse cx="220" cy="184" rx="96" ry="48" fill="rgba(90,19,109,0.10)"/>
-            <ellipse cx="454" cy="228" rx="128" ry="62" fill="rgba(216,196,154,0.36)"/>
-            <ellipse cx="674" cy="250" rx="150" ry="74" fill="rgba(90,19,109,0.10)"/>
-            <ellipse cx="746" cy="382" rx="96" ry="42" fill="rgba(42,180,58,0.12)"/>
-            <ellipse cx="326" cy="386" rx="110" ry="48" fill="rgba(90,19,109,0.08)"/>
-            <circle class="pin" cx="615" cy="330" r="12" data-map="Maldives"/>
-            <circle class="pin" cx="470" cy="190" r="12" data-map="Europe"/>
-            <circle class="pin" cx="532" cy="306" r="12" data-map="Dubai"/>
-            <circle class="pin" cx="705" cy="252" r="12" data-map="Japan"/>
-            <circle class="pin" cx="435" cy="360" r="12" data-map="Kenya"/>
-            <circle class="pin" cx="760" cy="420" r="12" data-map="Australia"/>
-          </svg>
-        </div>
-        <aside class="map-card reveal">
+    <!-- Bento Grid Section -->
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head reveal">
           <div>
-            <h3 id="mapTitle">Countries Served</h3>
-            <p class="map-note" id="mapText">Explore sample TGV routes across islands, Europe, Africa, the Middle East, Asia, and Australia.</p>
-            <div class="map-list">
-              <button class="active" data-map="Maldives">Maldives: seaplanes, villas, reefs</button>
-              <button data-map="Europe">Europe: rail, lake resorts, city hotels</button>
-              <button data-map="Dubai">Dubai: stopovers, desert, premium retail</button>
-              <button data-map="Japan">Japan: culture, cuisine, cherry blossoms</button>
+            <span class="eyebrow">TGV At A Glance</span>
+            <h2 class="section-title">Proof points with premium presence.</h2>
+          </div>
+          <p class="section-copy">A confident grid showing our credentials without crowding your screen with traditional travel pamphlets.</p>
+        </div>
+        <div class="bento-grid">
+          <article class="bento large reveal">
+            <div class="num">15+</div>
+            <div>
+              <h3>Years planning private escapes.</h3>
+              <p>Trusted connections across key global networks, providing upgrades and access not found elsewhere.</p>
+            </div>
+          </article>
+          <article class="bento gold reveal">
+            <div class="num">50+</div>
+            <div>
+              <h3>Destinations served</h3>
+              <p>From overwater Maldivian island sanctuaries to detailed European rail routes.</p>
+            </div>
+          </article>
+          <article class="bento reveal">
+            <div class="num">10k+</div>
+            <div>
+              <h3>Travelers cared for</h3>
+              <p>Milestone honeymoons, multi-generation family holidays, and private group charters.</p>
+            </div>
+          </article>
+          <article class="bento green reveal">
+            <div class="num">24/7</div>
+            <div>
+              <h3>Active monitoring</h3>
+              <p>Flight delays, gate changes, and transport adjustments managed dynamically behind the scenes.</p>
+            </div>
+          </article>
+          <article class="bento reveal">
+            <div class="num">Visa</div>
+            <div>
+              <h3>Visa support</h3>
+              <p>Appointment booking, mock interviews, document layout checks, and fast-track guidance.</p>
+            </div>
+          </article>
+          <article class="bento reveal">
+            <div class="num">Elite</div>
+            <div>
+              <h3>Signature benefits</h3>
+              <p>Complimentary upgrades, private dinners, seaplane arrangements, and tailored excursions.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Slider Section -->
+    <section class="section testimonials-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Client Perspectives</span>
+            <h2 class="section-title">Reviews that feel personal and polished.</h2>
+          </div>
+          <p class="section-copy">Read thoughts from families and couples who trust TGV to secure their holidays year after year.</p>
+        </div>
+        <div class="testimonials-slider">
+          <article class="review-card reveal">
+            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1000&q=84" alt="Luxury traveler portrait">
+            <div class="review-content">
+              <p>"Every transfer, dinner booking, and villa detail was handled before we even had to ask. Maldives was spectacular."</p>
+              <div class="reviewer"><strong>Rhea & Karan, Mumbai</strong><span class="stars">★★★★★</span></div>
+            </div>
+          </article>
+          <article class="review-card reveal">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=84" alt="Traveler portrait">
+            <div class="review-content">
+              <p>"TGV made Switzerland feel effortless. The hotels and routes they recommended would have taken me weeks to find alone."</p>
+              <div class="reviewer"><strong>Meera Shah, Delhi</strong><span class="stars">★★★★★</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ==================== EXPERIENCES PAGE VIEW ==================== -->
+  <div id="experiences-page" class="page-view">
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Bespoke Travel Styles</span>
+            <h2 class="section-title">Travel styles with room to breathe.</h2>
+          </div>
+          <p class="section-copy">Filter and explore our curated holiday themes. Each card represents a style, shaped individually to your preferred level of privacy and adventure.</p>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All Styles</button>
+          <button class="filter-btn" data-filter="island">Island Sanctuaries</button>
+          <button class="filter-btn" data-filter="europe">Grand Europe</button>
+          <button class="filter-btn" data-filter="safari">Wild Luxury</button>
+          <button class="filter-btn" data-filter="milestone">Milestones</button>
+        </div>
+
+        <div class="experiences-grid" id="experiencesGrid">
+          <article class="experience-card" data-category="island">
+            <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1400&q=86" alt="Overwater villas in the Maldives">
+            <div class="experience-content">
+              <span class="card-kicker">Island Sanctuaries</span>
+              <h3>Private villas and quiet blue horizons.</h3>
+              <p>Overwater suites, private infinity pools, seaplane arrivals, and sunset boat journeys styled around your timing in the Maldives, Seychelles, or Mauritius.</p>
+              <div class="experience-details">
+                <h5>Signature Itinerary Highlights</h5>
+                <ul>
+                  <li>Seaplane charter transfers</li>
+                  <li>Overwater sunset villa</li>
+                  <li>Private chef sandbank dinner</li>
+                  <li>Guided coral reef safari</li>
+                </ul>
+              </div>
+              <a href="#journey?style=island" class="text-link">Design an island escape</a>
+            </div>
+          </article>
+
+          <article class="experience-card" data-category="europe">
+            <img src="https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1400&q=86" alt="Luxury European city travel">
+            <div class="experience-content">
+              <span class="card-kicker">Grand Europe</span>
+              <h3>Hotels, scenic trains, and hidden bistros.</h3>
+              <p>Paris, Swiss Alps, Lake Como, and Florence with polished first-class rail connections, private tour guides, and stays in rooms with authentic heritage views.</p>
+              <div class="experience-details">
+                <h5>Signature Itinerary Highlights</h5>
+                <ul>
+                  <li>Glacier Express Excel Class</li>
+                  <li>Lake Como private boat hire</li>
+                  <li>Private Louvre evening tour</li>
+                  <li>Michelin-starred hidden tables</li>
+                </ul>
+              </div>
+              <a href="#journey?style=europe" class="text-link">Design a European route</a>
+            </div>
+          </article>
+
+          <article class="experience-card" data-category="safari">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1400&q=86" alt="Safari landscape with luxury travel feeling">
+            <div class="experience-content">
+              <span class="card-kicker">Wild Luxury</span>
+              <h3>Safari lodges and once-in-a-lifetime terrain.</h3>
+              <p>Game drives in Kenya's Maasai Mara or South Africa, luxury boutique tents, helicopter charters, and bush dinners under the southern stars.</p>
+              <div class="experience-details">
+                <h5>Signature Itinerary Highlights</h5>
+                <ul>
+                  <li>Luxury fly-in safari lodge</li>
+                  <li>Dawn balloon ride & champagne</li>
+                  <li>Exclusive game conservation trip</li>
+                  <li>Private naturalist ranger</li>
+                </ul>
+              </div>
+              <a href="#journey?style=safari" class="text-link">Design a wild escape</a>
+            </div>
+          </article>
+
+          <article class="experience-card" data-category="milestone">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=86" alt="Luxury beach escape">
+            <div class="experience-content">
+              <span class="card-kicker">Milestone Celebrations</span>
+              <h3>Honeymoons, anniversaries, and family milestones.</h3>
+              <p>Personalized amenities, closed events, professional vacation photographers, and custom details designed to mark life's significant changes.</p>
+              <div class="experience-details">
+                <h5>Signature Itinerary Highlights</h5>
+                <ul>
+                  <li>Dedicated travel photographer</li>
+                  <li>Private beach reception setup</li>
+                  <li>Suite upgrade priorities</li>
+                  <li>Bespoke celebration catalog</li>
+                </ul>
+              </div>
+              <a href="#journey?style=milestone" class="text-link">Design a milestone trip</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ==================== CUSTOMIZE PAGE VIEW ==================== -->
+  <div id="customize-page" class="page-view">
+    <section class="section">
+      <div class="container">
+        <div class="journey-shell">
+          <aside class="journey-intro">
+            <div>
+              <span class="eyebrow" style="color:var(--gold-light)">Journey Builder</span>
+              <h2>Your holiday, built like a private commission.</h2>
+              <p>Select your mood, stay preference, duration, and investment. This builder provides our lead concierges with a starting blueprint for your itinerary.</p>
+            </div>
+            <div class="journey-meta">
+              <div><span>Initial review</span><strong>Under 2 hours</strong></div>
+              <div><span>Planning model</span><strong>1-on-1 human expert</strong></div>
+              <div><span>Refinement rounds</span><strong>Unlimited until perfect</strong></div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=84" alt="Luxury hotel suite">
+          </aside>
+          
+          <div class="journey-builder">
+            <div class="timeline" id="timeline">
+              <button class="active" data-step="0" id="stepBtn0"><small>01</small><span>Mood</span></button>
+              <button data-step="1" id="stepBtn1"><small>02</small><span>Stay Style</span></button>
+              <button data-step="2" id="stepBtn2"><small>03</small><span>Dates</span></button>
+              <button data-step="3" id="stepBtn3"><small>04</small><span>Investment</span></button>
+              <button data-step="4" id="stepBtn4"><small>05</small><span>Details</span></button>
+            </div>
+            
+            <div class="builder-body">
+              <div class="builder-form" id="builderFormContainer">
+                <!-- Step 1 Panel -->
+                <div class="panel active" data-panel="0" id="panel0">
+                  <h3>Start with the feeling.</h3>
+                  <p>Choose the core setting for this bespoke journey.</p>
+                  <div class="choice-grid">
+                    <button type="button" class="choice selected" data-value="Ocean Retreat" data-img="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1100&q=84">
+                      <strong>Ocean Retreat</strong>
+                      <span>Maldives, Seychelles, Mauritius</span>
+                    </button>
+                    <button type="button" class="choice" data-value="European Grandeur" data-img="https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1100&q=84">
+                      <strong>European Grandeur</strong>
+                      <span>France, Italy, Switzerland</span>
+                    </button>
+                    <button type="button" class="choice" data-value="Culture & Cuisine" data-img="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=84">
+                      <strong>Culture & Cuisine</strong>
+                      <span>Japan, Turkey, Spain</span>
+                    </button>
+                    <button type="button" class="choice" data-value="Wild Luxury" data-img="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1100&q=84">
+                      <strong>Wild Luxury</strong>
+                      <span>Kenya, South Africa, Tanzania</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 2 Panel -->
+                <div class="panel" data-panel="1" id="panel1">
+                  <h3>Define your stay style.</h3>
+                  <p>How would you prefer to pace your itinerary?</p>
+                  <div class="choice-grid">
+                    <button type="button" class="choice selected" data-value="Ultra Relaxed">
+                      <strong>Ultra Relaxed</strong>
+                      <span>Extended stays, minimal check-ins</span>
+                    </button>
+                    <button type="button" class="choice" data-value="Balanced Discovery">
+                      <strong>Balanced Discovery</strong>
+                      <span>Comfortable pace, key excursions</span>
+                    </button>
+                    <button type="button" class="choice" data-value="Immersive Experiences">
+                      <strong>Immersive Access</strong>
+                      <span>Daily guides, rare dining entries</span>
+                    </button>
+                    <button type="button" class="choice" data-value="Seamless Family">
+                      <strong>Family Seamless</strong>
+                      <span>Kid-friendly spaces & local guides</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 3 Panel -->
+                <div class="panel" data-panel="2" id="panel2">
+                  <h3>Establish the window.</h3>
+                  <p>When and how long do you plan to travel?</p>
+                  <div class="field-grid">
+                    <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)">
+                      Month of Travel
+                      <input class="field" type="month" id="travelMonth" value="2026-07">
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)">
+                      Duration
+                      <select class="field" id="travelDuration">
+                        <option>5-7 nights</option>
+                        <option>8-10 nights</option>
+                        <option>11-14 nights</option>
+                        <option>15+ nights</option>
+                      </select>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)">
+                      Travelers
+                      <select class="field" id="travelCount">
+                        <option>2 travelers</option>
+                        <option>Family of 3-4</option>
+                        <option>Group of 5+</option>
+                        <option>Solo escape</option>
+                      </select>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)">
+                      Flight Class
+                      <select class="field" id="travelClass">
+                        <option>Business Class</option>
+                        <option>First Class</option>
+                        <option>Premium Economy</option>
+                        <option>Arrange own flights</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Step 4 Panel -->
+                <div class="panel" data-panel="3" id="panel3">
+                  <h3>Set the investment range.</h3>
+                  <p>A clear scale allows us to target properties and benefits correctly.</p>
+                  <div class="slider-row">
+                    <div class="slider-value" id="budgetValue">Rs. 6.0L</div>
+                    <input type="range" min="200000" max="1800000" value="600000" step="50000" id="budgetSlider" aria-label="Budget slider">
+                  </div>
+                  <div class="slider-tier-info">
+                    <strong id="budgetTierName">Signature Luxury Package</strong>
+                    <span id="budgetTierDesc">Includes select 5-star resort overwater suites, premium flights, business airport lounge entries, and custom transfers.</span>
+                  </div>
+                </div>
+
+                <!-- Step 5 Panel -->
+                <div class="panel" data-panel="4" id="panel4">
+                  <h3>Bespoke requests & contact.</h3>
+                  <p>Add specific notes so we can verify details before scheduling a call.</p>
+                  <div class="field-grid">
+                    <input class="field" type="text" id="custName" placeholder="Full Name" required>
+                    <input class="field" type="tel" id="custPhone" placeholder="Phone Number" required>
+                    <input class="field" type="email" id="custEmail" placeholder="Email Address" required style="grid-column: 1 / -1;">
+                    <textarea class="field" id="custNotes" placeholder="Anniversary arrangements, specific dietary requirements, visa timing, preferred airlines..."></textarea>
+                  </div>
+                </div>
+                
+                <div class="builder-actions">
+                  <button type="button" class="btn btn-light" id="prevBtn" style="visibility: hidden;">Back</button>
+                  <button type="button" class="btn btn-primary" id="nextBtn">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;margin-left:6px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                </div>
+              </div>
+              
+              <div class="builder-visual">
+                <img id="journeyImage" src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1100&q=84" alt="Journey inspiration">
+                <div class="visual-caption">
+                  <h3 id="journeyTitle">Ocean Retreat</h3>
+                  <p id="journeyText">Water villas, private transfers, and soft, unhurried days.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <p class="map-note">Pins and routes are illustrative destination highlights for consultation planning.</p>
-        </aside>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <aside class="contact-panel reveal">
+
+  <!-- ==================== DESTINATIONS PAGE VIEW ==================== -->
+  <div id="destinations-page" class="page-view">
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
           <div>
-            <span class="eyebrow" style="color:#fff">Contact</span>
-            <h2>Begin with a private travel consultation.</h2>
-            <p>Share your idea, occasion, dates, and preferred comfort level. TGV will respond with the next best step.</p>
+            <span class="eyebrow">Signature Countries</span>
+            <h2 class="section-title">A larger, richer destination showcase.</h2>
           </div>
-          <div class="contact-methods">
-            <div class="contact-method"><small>Call</small><strong>+91 98765 43210</strong></div>
-            <div class="contact-method"><small>Email</small><strong>concierge@tgvholidays.com</strong></div>
-            <div class="contact-method"><small>Support</small><strong>24/7 active travel assistance</strong></div>
+          <p class="section-copy">Read country outlines directly prepared by our travel concierges, covering entry criteria, weather windows, and signature hotels.</p>
+        </div>
+
+        <div class="destination-layout">
+          <!-- Featured Image Panel -->
+          <article class="featured-destination" id="destinationFeaturedCard">
+            <img id="featuredImage" src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1500&q=86" alt="Featured luxury destination">
+            <div class="featured-copy">
+              <span class="card-kicker" id="featuredKicker" style="color:var(--gold-light);">Featured Country</span>
+              <h3 id="featuredTitle">Maldives</h3>
+              <p id="featuredText">A private-island rhythm of overwater villas, reef swims, seaplanes, and sunset dining for travelers who want quiet luxury.</p>
+            </div>
+          </article>
+
+          <!-- Guide Details Panel -->
+          <div class="explorer-guide">
+            <div>
+              <div class="guide-tabs" id="guideTabsContainer">
+                <button type="button" class="guide-tab-btn active" data-dest="0">Maldives</button>
+                <button type="button" class="guide-tab-btn" data-dest="1">Switzerland</button>
+                <button type="button" class="guide-tab-btn" data-dest="2">Japan</button>
+                <button type="button" class="guide-tab-btn" data-dest="3">Kenya</button>
+              </div>
+
+              <div class="guide-content" id="guideContent">
+                <div class="guide-meta-row">
+                  <div class="guide-meta-col">
+                    <small>Best Season</small>
+                    <strong id="gSeason">Nov - Apr</strong>
+                  </div>
+                  <div class="guide-meta-col">
+                    <small>Visa Timing</small>
+                    <strong id="gVisa">Visa on Arrival</strong>
+                  </div>
+                  <div class="guide-meta-col">
+                    <small>Stay Length</small>
+                    <strong id="gLength">5 - 7 Nights</strong>
+                  </div>
+                </div>
+
+                <div class="guide-bullets">
+                  <h5 id="gExpTitle">Exclusive Experiences</h5>
+                  <ul id="gExpList">
+                    <li>Private sandbank dinner under the stars</li>
+                    <li>Sub-aquatic luxury dining excursions</li>
+                    <li>Guided manta ray snorkeling routes</li>
+                    <li>Charter catamaran cruises at sunset</li>
+                  </ul>
+                </div>
+
+                <div class="guide-bullets">
+                  <h5>Recommended Estates</h5>
+                  <ul id="gEstList">
+                    <li>Soneva Jani (No-News No-Shoes Villas)</li>
+                    <li>One&Only Reethi Rah (Bespoke Luxury)</li>
+                    <li>Patina Maldives (Contemporary Design Suites)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="destPlanBtn" style="width:100%;margin-top:20px;">
+              Plan Trip to Maldives
+            </button>
           </div>
-        </aside>
-        <form class="contact-form reveal">
-          <div class="form-grid">
-            <label>Name<input type="text" placeholder="Your full name"></label>
-            <label>Phone<input type="tel" placeholder="+91"></label>
-            <label>Email<input type="email" placeholder="you@example.com"></label>
-            <label>Preferred Destination<select><option>Maldives</option><option>Europe</option><option>Dubai</option><option>Japan</option><option>Africa Safari</option><option>Not sure yet</option></select></label>
-            <label>Travel Style<select><option>Luxury honeymoon</option><option>Family holiday</option><option>Celebration trip</option><option>Group escape</option><option>Corporate retreat</option></select></label>
-            <label>Budget Range<select><option>Rs. 3L - Rs. 6L</option><option>Rs. 6L - Rs. 10L</option><option>Rs. 10L - Rs. 18L</option><option>Rs. 18L+</option></select></label>
-            <label class="full">Trip Notes<textarea placeholder="Tell us about dates, travelers, occasion, visa needs, flights, hotel preferences, and must-have experiences."></textarea></label>
-          </div>
-          <div class="form-actions">
-            <button type="button" class="btn btn-primary">Request Consultation</button>
-            <button type="button" class="btn btn-light" onclick="openPayment()">Open Secure Payment</button>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
+
+  <!-- ==================== WORLD MAP PAGE VIEW ==================== -->
+  <div id="map-page" class="page-view">
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Global Reach</span>
+            <h2 class="section-title">Routes, countries, and highlights.</h2>
+          </div>
+          <p class="section-copy">Click on map pins or select locations from the sidebar to inspect TGV flight connections, visa readiness, and regional details.</p>
+        </div>
+
+        <div class="map-wrap">
+          <!-- SVG World Map Container -->
+          <div class="world-map">
+            <svg viewBox="0 0 1000 520" role="img" aria-label="Interactive world travel map">
+              <!-- Outline map background grid & paths -->
+              <rect width="1000" height="520" fill="none"/>
+              <path d="M150 120 C 250 80, 400 120, 500 100" stroke="rgba(255,255,255,0.03)" stroke-width="1.5" fill="none"/>
+              <path d="M100 280 C 300 240, 450 320, 600 280" stroke="rgba(255,255,255,0.03)" stroke-width="1.5" fill="none"/>
+              <path d="M400 380 C 500 360, 700 420, 850 360" stroke="rgba(255,255,255,0.03)" stroke-width="1.5" fill="none"/>
+              
+              <!-- Flight route arcs from India (Approx base: cx=605, cy=245) -->
+              <path id="route-Maldives" d="M 605 245 Q 610 290 615 330" class="route-path" />
+              <path id="route-Europe" d="M 605 245 Q 520 200 470 190" class="route-path" />
+              <path id="route-Dubai" d="M 605 245 Q 560 260 532 256" class="route-path" />
+              <path id="route-Japan" d="M 605 245 Q 670 230 725 220" class="route-path" />
+              <path id="route-Kenya" d="M 605 245 Q 510 320 445 350" class="route-path" />
+              <path id="route-Australia" d="M 605 245 Q 730 360 810 400" class="route-path" />
+
+              <!-- India Base Pin -->
+              <circle cx="605" cy="245" r="4" fill="#C2A476" stroke="#fff" stroke-width="1" />
+              <text x="605" y="235" fill="#C2A476" font-size="9" text-anchor="middle" font-weight="bold" letter-spacing="1">TGV BASE</text>
+
+              <!-- Interactive Pins -->
+              <g class="pin-g" id="pin-Maldives" data-map="Maldives">
+                <circle cx="615" cy="330" r="16" class="pin-pulse"/>
+                <circle cx="615" cy="330" r="7" class="pin-circle"/>
+              </g>
+              <g class="pin-g" id="pin-Europe" data-map="Europe">
+                <circle cx="470" cy="190" r="16" class="pin-pulse"/>
+                <circle cx="470" cy="190" r="7" class="pin-circle"/>
+              </g>
+              <g class="pin-g" id="pin-Dubai" data-map="Dubai">
+                <circle cx="532" cy="256" r="16" class="pin-pulse"/>
+                <circle cx="532" cy="256" r="7" class="pin-circle"/>
+              </g>
+              <g class="pin-g" id="pin-Japan" data-map="Japan">
+                <circle cx="725" cy="220" r="16" class="pin-pulse"/>
+                <circle cx="725" cy="220" r="7" class="pin-circle"/>
+              </g>
+              <g class="pin-g" id="pin-Kenya" data-map="Kenya">
+                <circle cx="445" cy="350" r="16" class="pin-pulse"/>
+                <circle cx="445" cy="350" r="7" class="pin-circle"/>
+              </g>
+              <g class="pin-g" id="pin-Australia" data-map="Australia">
+                <circle cx="810" cy="400" r="16" class="pin-pulse"/>
+                <circle cx="810" cy="400" r="7" class="pin-circle"/>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Sidebar Info Panel -->
+          <aside class="map-card">
+            <div>
+              <h3 id="mapTitle">Maldives</h3>
+              <p class="map-note" id="mapText">Explore sample TGV routes across islands, Europe, Africa, the Middle East, Asia, and Australia.</p>
+              
+              <div class="map-list" id="mapListContainer">
+                <button type="button" class="active" data-map="Maldives">Maldives: private seaplanes & reef villas</button>
+                <button type="button" data-map="Europe">Europe: Swiss rail & boutique lake villas</button>
+                <button type="button" data-map="Dubai">Dubai: stopover suites & private desert guides</button>
+                <button type="button" data-map="Japan">Japan: seasonal ryokan & culinary access</button>
+                <button type="button" data-map="Kenya">Kenya: fly-in safari & game drives</button>
+                <button type="button" data-map="Australia">Australia: reef flights & vineyard stays</button>
+              </div>
+            </div>
+            
+            <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:16px;margin-top:20px;">
+              <button type="button" class="btn btn-secondary" id="mapInquireBtn" style="width:100%;">
+                Inquire For Maldives
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ==================== CONTACT & FAQ PAGE VIEW ==================== -->
+  <div id="contact-page" class="page-view">
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+          <aside class="contact-panel">
+            <div>
+              <span class="eyebrow" style="color:var(--gold-light)">Contact Concierge</span>
+              <h2>Begin with a private travel consultation.</h2>
+              <p>Submit your ideas and let our lead planners set up a initial call to walk you through visa timelines, room allotments, and flight details.</p>
+            </div>
+            
+            <div class="contact-methods">
+              <div class="contact-method">
+                <small>Secure lines</small>
+                <strong>+91 98765 43210</strong>
+              </div>
+              <div class="contact-method">
+                <small>Electronic mail</small>
+                <strong>concierge@tgvholidays.com</strong>
+              </div>
+              <div class="contact-method">
+                <small>On-trip care</small>
+                <strong>24/7 client dispatch center</strong>
+              </div>
+            </div>
+          </aside>
+          
+          <form class="contact-form" id="contactViewForm">
+            <div class="form-grid">
+              <label>
+                Your Full Name
+                <input type="text" id="cntName" placeholder="Full name" required>
+              </label>
+              <label>
+                Mobile Number
+                <input type="tel" id="cntPhone" placeholder="+91" required>
+              </label>
+              <label>
+                Email Address
+                <input type="email" id="cntEmail" placeholder="you@domain.com" required>
+              </label>
+              <label>
+                Destination Option
+                <select id="cntDest">
+                  <option>Maldives Overwater</option>
+                  <option>Switzerland & Como</option>
+                  <option>Japan Culinary</option>
+                  <option>Kenya Safari</option>
+                  <option>Other Escape</option>
+                </select>
+              </label>
+              <label>
+                Travel Category
+                <select id="cntStyle">
+                  <option>Luxury Honeymoon</option>
+                  <option>Family Reunion</option>
+                  <option>Milestone Anniversary</option>
+                  <option>Private Group Charter</option>
+                </select>
+              </label>
+              <label>
+                Investment Estimate
+                <select id="cntBudget">
+                  <option>Rs. 3L - Rs. 6L</option>
+                  <option>Rs. 6L - Rs. 10L</option>
+                  <option>Rs. 10L - Rs. 18L</option>
+                  <option>Rs. 18L+</option>
+                </select>
+              </label>
+              <label class="full">
+                Trip Description & Flight Preferences
+                <textarea id="cntNotes" placeholder="Dates, airline requirements, specific accommodations, visa support priorities..."></textarea>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Submit Inquiries</button>
+              <a href="#payment" class="btn btn-light">Secure Booking Deposit</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Accordion FAQ Container -->
+        <div class="faq-section">
+          <h3>Common Planning Queries</h3>
+          <div class="faq-grid">
+            <div class="faq-item">
+              <button type="button" class="faq-trigger">
+                How does the planning process proceed?
+                <span>+</span>
+              </button>
+              <div class="faq-content">
+                <p>1. Complete the Journey Builder overview. 2. A dedicated concierge verifies slot availability and coordinates a phone consultation. 3. Receive your tailored 1st-draft itinerary outline. 4. Refine routes and properties until completely satisfied.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger">
+                Do you coordinate visa application procedures?
+                <span>+</span>
+              </button>
+              <div class="faq-content">
+                <p>Yes. TGV manages documentation preparation, appointment scheduling, fast-track routing checks, and application formatting for all major international destinations including Schengen zones, UK, Japan, and East Africa.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger">
+                Can accommodations and dates be altered post-confirmation?
+                <span>+</span>
+              </button>
+              <div class="faq-content">
+                <p>We structure bookings using flexible luxury vouchers. Standard alterations are supported up to 21 days prior to flight departures, subject to individual property seasonal policies and airlines schedule changes.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger">
+                Do you support private aviation and yachts charters?
+                <span>+</span>
+              </button>
+              <div class="faq-content">
+                <p>Absolutely. Through our global luxury concierge agreements, we arrange private seaplane transfers in the Indian Ocean, luxury motor yacht charters in the Mediterranean, and regional private aviation charters.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ==================== SECURE BOOKING & PAYMENT PAGE VIEW ==================== -->
+  <div id="payment-page" class="page-view">
+    <section class="section">
+      <div class="container">
+        <div class="section-head" style="text-align:center; display:block;">
+          <span class="eyebrow">Checkout Terminal</span>
+          <h2 class="section-title">Finalize Your Luxury Booking</h2>
+          <p class="section-copy" style="margin: 10px auto 0;">Please complete the secure processing steps below. Your funds will be held in escrow until all flight tickets and hotel vouchers are verified.</p>
+        </div>
+
+        <div class="payment-layout" id="paymentMainLayout">
+          <!-- Summary card -->
+          <div class="payment-summary">
+            <div>
+              <span class="eyebrow" style="color:var(--gold-light)">Confirmation Detail</span>
+              <h3 style="margin-top:10px;">Bespoke Booking confirmation</h3>
+              <p style="margin-top:6px;">Sample billing statement for a signature Maldives escape.</p>
+            </div>
+            
+            <div class="payment-lines">
+              <div><span>Premium Ocean Overwater Villa (5 Nights)</span><strong>Rs. 4,80,000</strong></div>
+              <div><span>Return Business Class Airfare (Delhi/Malé)</span><strong>Rs. 1,20,000</strong></div>
+              <div><span>Fast-track Malé Airport seaplane transfers</span><strong>Rs. 16,500</strong></div>
+              <div><span>Custom Visa assistance & Insurance</span><strong>Rs. 13,500</strong></div>
+              <div><span>TGV Preferred Loyalty Discount</span><strong style="color:#7CFF8A;">- Rs. 30,000</strong></div>
+              <div class="total"><span>Grand Total Due</span><strong id="checkoutTotalVal">Rs. 6,00,000</strong></div>
+            </div>
+            
+            <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:16px;font-size:12px;color:rgba(255,255,255,0.6);">
+              Transactions are covered by TGV Travel Guarantee. Protected funds are secured in merchant escrow.
+            </div>
+          </div>
+
+          <!-- Checkout Gateway -->
+          <div class="payment-portal">
+            <div class="payment-tabs">
+              <button type="button" class="payment-tab-btn active" data-tab="card">Credit Card</button>
+              <button type="button" class="payment-tab-btn" data-tab="upi">UPI Instant</button>
+              <button type="button" class="payment-tab-btn" data-tab="banking">Net Banking</button>
+            </div>
+
+            <!-- Tab 1: Credit Card Portal -->
+            <div class="payment-view-section active" id="paySec-card">
+              <!-- Credit Card Visualizer -->
+              <div class="card-wrapper">
+                <div class="credit-card-v" id="visualCard">
+                  <!-- Front of Card -->
+                  <div class="card-face card-front">
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                      <div class="card-chip"></div>
+                      <span class="card-logo">TGV Luxe</span>
+                    </div>
+                    <div class="card-number-v" id="cardNumVal">•••• •••• •••• ••••</div>
+                    <div class="card-row-v">
+                      <div>
+                        <div style="font-size:8px;opacity:0.6;margin-bottom:2px;">CARDHOLDER</div>
+                        <div class="card-holder-v" id="cardHolderVal">YOUR NAME HERE</div>
+                      </div>
+                      <div style="text-align:right;">
+                        <div style="font-size:8px;opacity:0.6;margin-bottom:2px;">EXPIRES</div>
+                        <div id="cardExpiryVal">MM/YY</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Back of Card -->
+                  <div class="card-face card-back">
+                    <div class="card-magnetic-strip"></div>
+                    <div class="card-signature-area">
+                      <span id="cardCvvVal">•••</span>
+                    </div>
+                    <div style="padding:0 20px;font-size:7px;opacity:0.5;line-height:1.3;margin-top:10px;">
+                      This card is virtual and linked to the TGV Luxury Escrow Terminal. SSL secured.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Credit Card Form -->
+              <form class="contact-form" id="cardPaymentForm" style="border:none;padding:0;box-shadow:none;">
+                <div class="form-grid">
+                  <label class="full">
+                    Card Number
+                    <input type="text" id="inpCardNum" placeholder="4111 2222 3333 4444" maxlength="19" required>
+                  </label>
+                  <label class="full">
+                    Name on Card
+                    <input type="text" id="inpCardHolder" placeholder="Name" required>
+                  </label>
+                  <label>
+                    Expiry Date
+                    <input type="text" id="inpCardExpiry" placeholder="MM/YY" maxlength="5" required>
+                  </label>
+                  <label>
+                    CVV Code
+                    <input type="password" id="inpCardCvv" placeholder="***" maxlength="3" required>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:24px;">
+                  Complete Escrow Payment (Rs. 6,00,000)
+                </button>
+              </form>
+            </div>
+
+            <!-- Tab 2: UPI Instant QR Code -->
+            <div class="payment-view-section" id="paySec-upi">
+              <div class="upi-qr-box">
+                <div class="qr-placeholder">
+                  <svg viewBox="0 0 100 100">
+                    <!-- Stylized SVG QR Code Grid -->
+                    <rect x="5" y="5" width="24" height="24" fill="#1C1221" stroke="#fff" stroke-width="2"/>
+                    <rect x="9" y="9" width="16" height="16" fill="#fff"/>
+                    <rect x="13" y="13" width="8" height="8" fill="#1C1221"/>
+                    
+                    <rect x="71" y="5" width="24" height="24" fill="#1C1221" stroke="#fff" stroke-width="2"/>
+                    <rect x="75" y="9" width="16" height="16" fill="#fff"/>
+                    <rect x="79" y="79" width="8" height="8" fill="#1C1221"/>
+                    
+                    <rect x="5" y="71" width="24" height="24" fill="#1C1221" stroke="#fff" stroke-width="2"/>
+                    <rect x="9" y="75" width="16" height="16" fill="#fff"/>
+                    <rect x="13" y="79" width="8" height="8" fill="#1C1221"/>
+
+                    <!-- Random QR dots -->
+                    <rect x="35" y="10" width="6" height="6" fill="#1C1221"/>
+                    <rect x="45" y="15" width="8" height="4" fill="#1C1221"/>
+                    <rect x="55" y="8" width="4" height="8" fill="#1C1221"/>
+                    <rect x="35" y="30" width="8" height="8" fill="#1C1221"/>
+                    <rect x="50" y="32" width="12" height="6" fill="#1C1221"/>
+                    <rect x="70" y="35" width="6" height="12" fill="#1C1221"/>
+                    <rect x="35" y="50" width="10" height="4" fill="#1C1221"/>
+                    <rect x="55" y="48" width="6" height="8" fill="#1C1221"/>
+                    <rect x="75" y="50" width="14" height="6" fill="#1C1221"/>
+                    <rect x="35" y="70" width="6" height="10" fill="#1C1221"/>
+                    <rect x="48" y="75" width="12" height="8" fill="#1C1221"/>
+                    <rect x="68" y="72" width="8" height="12" fill="#1C1221"/>
+                    
+                    <!-- Center Logo Box -->
+                    <rect x="40" y="40" width="20" height="20" fill="#FFF"/>
+                    <circle cx="50" cy="50" r="7" fill="var(--purple)"/>
+                    <path d="M48 50 L52 50 M50 48 L50 52" stroke="#fff" stroke-width="1.5"/>
+                  </svg>
+                </div>
+                <div class="qr-timer" id="qrTimerDisplay">Code Expires In: 05:00</div>
+                <p style="font-size:12px;color:var(--muted);margin-top:12px;max-width:320px;">
+                  Scan this escrow QR code using BHIM, Google Pay, PhonePe, or Paytm to complete transaction instantly.
+                </p>
+                <div style="width:100%;margin-top:20px;border-top:1px solid var(--line);padding-top:16px;">
+                  <button type="button" class="btn btn-primary" id="upiVerifyMockBtn" style="width:100%;">
+                    Simulate Payment Success Verification
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Net Banking -->
+            <div class="payment-view-section" id="paySec-banking">
+              <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+                Select your preferred institution. You will be redirected to their secure authentication portal.
+              </p>
+              <div class="bank-grid" id="bankSelectionContainer">
+                <button type="button" class="bank-option" data-bank="hdfc">HDFC Bank (Luxe)</button>
+                <button type="button" class="bank-option" data-bank="icici">ICICI Bank (Wealth)</button>
+                <button type="button" class="bank-option" data-bank="sbi">State Bank of India (Premium)</button>
+                <button type="button" class="bank-option" data-bank="axis">Axis Bank (Priority)</button>
+              </div>
+              <button type="button" class="btn btn-primary" id="bankSubmitBtn" style="width:100%;margin-top:28px;">
+                Authenticate & Pay securely
+              </button>
+            </div>
+
+            <div class="security-indicators">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--green);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 256-Bit SSL Encryption</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--green);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> PCI-DSS Compliant</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Voucher Screen (initially hidden) -->
+        <div id="paymentSuccessVoucher" style="display:none;">
+          <div class="receipt-box">
+            <div class="receipt-header">
+              <span class="receipt-logo">TGV Worldwide Holidays</span>
+              <div class="receipt-kicker">Escrow Payment Confirmed</div>
+            </div>
+            
+            <div class="receipt-body">
+              <div class="receipt-row">
+                <span>Receipt Number:</span>
+                <strong id="recNum">TGV-PAY-8829102</strong>
+              </div>
+              <div class="receipt-row">
+                <span>Date & Time:</span>
+                <strong id="recDate">2026-06-20 08:30</strong>
+              </div>
+              <div class="receipt-row">
+                <span>Vessel/itinerary:</span>
+                <strong id="recTrip">Maldives Overwater Sanctuary Escape</strong>
+              </div>
+              <div class="receipt-row">
+                <span>Travelers:</span>
+                <strong id="recCount">2 Adult travelers</strong>
+              </div>
+              <div class="receipt-row">
+                <span>Fulfillment Concierge:</span>
+                <strong>Assigned to Lead Team</strong>
+              </div>
+              <div class="receipt-row total">
+                <span>Total Escrow Held:</span>
+                <strong id="recTotal">Rs. 6,00,000</strong>
+              </div>
+            </div>
+            
+            <div class="receipt-footer">
+              <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">
+                A PDF statement and authorization voucher have been forwarded to your registered email address.
+              </p>
+              <button type="button" class="btn btn-primary" onclick="window.print()">
+                Print Authorization Voucher
+              </button>
+              <button type="button" class="btn btn-light" onclick="window.location.hash = '#home'" style="margin-top:10px; width:100%;">
+                Return to Homepage
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
 </main>
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="brand">
+    <a class="brand" href="#home" aria-label="TGV Worldwide Holidays home" style="color:#fff;">
       <span class="brand-mark"><img src="assets/tgv-logo.jpeg" alt="TGV Worldwide Holidays logo"></span>
       <span><span class="brand-name">TGV Worldwide Holidays</span><span class="brand-line">Luxury Travel Concierge</span></span>
-    </div>
-    <p>Luxury holidays, visas, flights, hotels, transfers, and concierge support.</p>
+    </a>
+    <p>Luxury travel, visas, flights, hotels, transfers, and complete concierge planning.</p>
   </div>
 </footer>
 
-<div class="payment-overlay" id="paymentOverlay" onclick="overlayClose(event)">
-  <div class="payment-modal" role="dialog" aria-modal="true" aria-label="Secure trip payment">
-    <div class="payment-summary">
-      <div>
-        <span class="eyebrow" style="color:#fff">Secure Booking</span>
-        <h3>Maldives Overwater Escape</h3>
-        <p>Sample package summary for a premium TGV holiday confirmation.</p>
-      </div>
-      <div class="payment-lines">
-        <div><span>Package for two</span><strong>Rs. 4,80,000</strong></div>
-        <div><span>Business flights</span><strong>Rs. 1,20,000</strong></div>
-        <div><span>Visa and insurance</span><strong>Rs. 13,500</strong></div>
-        <div><span>TGV loyalty credit</span><strong style="color:#7dff8b">- Rs. 13,500</strong></div>
-        <div><span>Total</span><strong>Rs. 6,00,000</strong></div>
-      </div>
-    </div>
-    <div class="payment-form">
-      <button class="close-modal" onclick="closePayment()" aria-label="Close payment">x</button>
-      <h3 style="font-size:42px;margin-bottom:10px">Complete Payment</h3>
-      <p style="color:var(--muted);margin-bottom:28px">Use a secure card, UPI, EMI, or bank transfer option.</p>
-      <div class="form-grid">
-        <label class="full">Card Number<input type="text" placeholder="1234 5678 9012 3456"></label>
-        <label>Name on Card<input type="text" placeholder="Your name"></label>
-        <label>Expiry<input type="text" placeholder="MM / YY"></label>
-        <label>CVV<input type="password" placeholder="***"></label>
-        <label>Payment Method<select><option>Card</option><option>UPI</option><option>No-cost EMI</option><option>Net banking</option></select></label>
-      </div>
-      <button class="btn btn-primary" style="width:100%;margin-top:24px">Pay Rs. 6,00,000 Securely</button>
-    </div>
-  </div>
-</div>
-
 <script>
+// SPA routing system
 const nav = document.getElementById("siteNav");
 const navLinks = document.getElementById("navLinks");
 const menuToggle = document.getElementById("menuToggle");
-window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 30));
-menuToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
-navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => navLinks.classList.remove("open")));
 
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 30);
+});
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => navLinks.classList.remove("open"));
+});
+
+function handleRouting() {
+  const hash = window.location.hash || '#home';
+
+  // Toggle home-active body class for navbar styling
+  if (hash === '#home' || hash === '') {
+    document.body.classList.add("home-active");
+  } else {
+    document.body.classList.remove("home-active");
+  }
+  
+  // Highlight active nav links
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    const linkHash = link.getAttribute("href");
+    if (linkHash === hash || (hash === '#home' && linkHash === '#home') || (hash === '' && linkHash === '#home')) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+
+  // Toggle visible page views
+  document.querySelectorAll('.page-view').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  let activePageId = 'home-page';
+  if (hash === '#experiences') activePageId = 'experiences-page';
+  else if (hash.startsWith('#journey')) activePageId = 'customize-page';
+  else if (hash === '#destinations') activePageId = 'destinations-page';
+  else if (hash === '#map') activePageId = 'map-page';
+  else if (hash === '#contact') activePageId = 'contact-page';
+  else if (hash === '#payment') activePageId = 'payment-page';
+
+  const activePage = document.getElementById(activePageId);
+  if (activePage) {
+    activePage.classList.add('active');
+  }
+
+  // Pre-load builder styles if query parameters are present
+  if (hash.startsWith('#journey') && hash.includes('?style=')) {
+    const params = new URLSearchParams(hash.split('?')[1]);
+    const style = params.get('style');
+    applyPreselectedStyle(style);
+  }
+
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener('hashchange', handleRouting);
+window.addEventListener('DOMContentLoaded', handleRouting);
+
+// Intersection observer for fade Up reveal styling
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add("visible");
@@ -1331,6 +2837,30 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
+// Experiences tab filter logic
+const filterButtons = document.querySelectorAll(".filter-btn");
+const experienceCards = document.querySelectorAll(".experience-card");
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const filter = btn.dataset.filter;
+
+    experienceCards.forEach(card => {
+      if (filter === "all" || card.dataset.category === filter) {
+        card.style.display = "flex";
+        setTimeout(() => { card.style.opacity = "1"; card.style.transform = "scale(1)"; }, 50);
+      } else {
+        card.style.opacity = "0";
+        card.style.transform = "scale(0.96)";
+        setTimeout(() => { card.style.display = "none"; }, 300);
+      }
+    });
+  });
+});
+
+// Journey Builder logic
 const journeyData = [
   {
     title: "Ocean Retreat",
@@ -1359,114 +2889,555 @@ const journeyData = [
   }
 ];
 
-document.querySelectorAll(".timeline button").forEach(button => {
-  button.addEventListener("click", () => setJourneyStep(Number(button.dataset.step)));
-});
+let builderCurrentStep = 0;
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-function setJourneyStep(step) {
-  document.querySelectorAll(".timeline button").forEach((button, index) => button.classList.toggle("active", index === step));
-  document.querySelectorAll(".panel").forEach(panel => panel.classList.toggle("active", Number(panel.dataset.panel) === step));
+function updateBuilderStep(step) {
+  builderCurrentStep = step;
+  
+  // Update timeline buttons
+  document.querySelectorAll(".timeline button").forEach((btn, idx) => {
+    btn.classList.toggle("active", idx === step);
+    btn.classList.toggle("completed", idx < step);
+  });
+
+  // Toggle panel views
+  document.querySelectorAll(".builder-form .panel").forEach((panel, idx) => {
+    panel.classList.toggle("active", idx === step);
+  });
+
+  // Update builder visuals
   document.getElementById("journeyImage").src = journeyData[step].image;
   document.getElementById("journeyTitle").textContent = journeyData[step].title;
   document.getElementById("journeyText").textContent = journeyData[step].text;
+
+  // Manage control buttons visibility
+  prevBtn.style.visibility = step === 0 ? "hidden" : "visible";
+  
+  if (step === 4) {
+    nextBtn.textContent = "Submit Planning Request";
+  } else {
+    nextBtn.innerHTML = `Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;margin-left:6px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+  }
 }
 
-document.querySelectorAll(".choice").forEach(choice => {
-  choice.addEventListener("click", () => {
-    const group = choice.parentElement;
-    group.querySelectorAll(".choice").forEach(item => item.classList.remove("selected"));
-    choice.classList.add("selected");
+prevBtn.addEventListener("click", () => {
+  if (builderCurrentStep > 0) {
+    updateBuilderStep(builderCurrentStep - 1);
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  if (builderCurrentStep < 4) {
+    updateBuilderStep(builderCurrentStep + 1);
+  } else {
+    // Form submission processing on Step 5
+    const email = document.getElementById("custEmail").value;
+    const name = document.getElementById("custName").value;
+    const phone = document.getElementById("custPhone").value;
+    
+    if (!name || !phone || !email) {
+      alert("Please provide name, phone and email details to submit your inquiry.");
+      return;
+    }
+
+    // Render mockup loader
+    const formContainer = document.getElementById("builderFormContainer");
+    const formOriginalHtml = formContainer.innerHTML;
+    
+    formContainer.innerHTML = `
+      <div class="spinner-container">
+        <div class="spinner"></div>
+        <p style="color:var(--purple);font-weight:700;">Connecting with lead concierge...</p>
+      </div>
+    `;
+
+    setTimeout(() => {
+      formContainer.innerHTML = `
+        <div class="success-seal">
+          <div class="success-icon">✓</div>
+          <h4>Blueprints Sent</h4>
+          <p>Thank you, ${name}. Your travel mood boards and selection files have been forwarded. A lead concierge will connect with you via +91 ${phone} within the next 2 hours.</p>
+          <button type="button" class="btn btn-light" id="resetBuilderBtn" style="margin-top:20px;">Design Another Journey</button>
+        </div>
+      `;
+
+      document.getElementById("resetBuilderBtn").addEventListener("click", () => {
+        location.reload();
+      });
+    }, 1500);
+  }
+});
+
+// Setup click updates for step buttons on timeline
+document.querySelectorAll(".timeline button").forEach((btn, idx) => {
+  btn.addEventListener("click", () => {
+    updateBuilderStep(idx);
   });
 });
 
-const budgetSlider = document.getElementById("budgetSlider");
-const budgetValue = document.getElementById("budgetValue");
-budgetSlider.addEventListener("input", () => {
-  const lakhs = Number(budgetSlider.value) / 100000;
-  budgetValue.textContent = `Rs. ${lakhs.toFixed(1)}L`;
+// Choices pre-loading and click toggles
+document.querySelectorAll(".choice").forEach(ch => {
+  ch.addEventListener("click", () => {
+    const panel = ch.closest(".panel");
+    panel.querySelectorAll(".choice").forEach(c => c.classList.remove("selected"));
+    ch.classList.add("selected");
+    
+    // If step 1, change dynamic images
+    if (ch.dataset.img && panel.dataset.panel === "0") {
+      journeyData[0].image = ch.dataset.img;
+      journeyData[0].title = ch.dataset.value;
+      updateBuilderStep(0);
+    }
+  });
 });
 
+// Apply preselected styles from experience page redirect
+function applyPreselectedStyle(style) {
+  let step0BtnIdx = 0;
+  if (style === 'europe') step0BtnIdx = 1;
+  else if (style === 'safari') step0BtnIdx = 3;
+  else if (style === 'milestone') step0BtnIdx = 0; // Default to Ocean
+  
+  const step0Panel = document.getElementById("panel0");
+  const choices = step0Panel.querySelectorAll(".choice");
+  choices.forEach(c => c.classList.remove("selected"));
+  choices[step0BtnIdx].classList.add("selected");
+  
+  journeyData[0].image = choices[step0BtnIdx].dataset.img;
+  journeyData[0].title = choices[step0BtnIdx].dataset.value;
+  updateBuilderStep(0);
+}
+
+// Budget range slider details
+const budgetSlider = document.getElementById("budgetSlider");
+const budgetValText = document.getElementById("budgetValue");
+const tierName = document.getElementById("budgetTierName");
+const tierDesc = document.getElementById("budgetTierDesc");
+
+const budgetTiers = [
+  {
+    max: 400000,
+    title: "Bespoke Comfort Escape",
+    desc: "Includes accommodation at verified 5-star boutique hotels, premium economy airfares, regional transfer routing, and standard visa support."
+  },
+  {
+    max: 800000,
+    title: "Signature Luxury Experience",
+    desc: "Includes select overwater suites, premium business class airfares, private seaplane transfers, priority visa slots, and customized dinners."
+  },
+  {
+    max: 1400000,
+    title: "Elite Sanctuary Escape",
+    desc: "Includes top-tier resort pool residences, private naturalist guide, first-class air tickets, seaplane transfers, and 24/7 client care desk support."
+  },
+  {
+    max: 2000000,
+    title: "Ultra-Premium Island Buyout",
+    desc: "Includes custom private villa compound bookings, private yacht charters, helicopter transfers, first-class lounge bookings, and chef custom meals."
+  }
+];
+
+budgetSlider.addEventListener("input", () => {
+  const value = Number(budgetSlider.value);
+  const lakhs = value / 100000;
+  budgetValText.textContent = `Rs. ${lakhs.toFixed(1)}L`;
+
+  // Update payment total dynamic value if any
+  document.getElementById("checkoutTotalVal").textContent = `Rs. ${lakhs.toFixed(1)}L`;
+  document.getElementById("recTotal").textContent = `Rs. ${lakhs.toFixed(1)}L`;
+
+  // Select dynamic description tier
+  const tier = budgetTiers.find(t => value <= t.max) || budgetTiers[budgetTiers.length - 1];
+  tierName.textContent = tier.title;
+  tierDesc.textContent = tier.desc;
+});
+
+// Destination Global Explorer showcase
 const destinations = [
   {
     name: "Maldives",
     kicker: "Featured Country",
     text: "A private-island rhythm of overwater villas, reef swims, seaplanes, and sunset dining for travelers who want quiet luxury.",
     image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1500&q=86",
-    thumb: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=500&q=80"
+    season: "Nov - Apr",
+    visa: "Visa on Arrival",
+    length: "5 - 7 Nights",
+    exps: ["Private sandbank dinner under the stars", "Sub-aquatic luxury dining excursions", "Guided manta ray snorkeling routes", "Charter catamaran cruises at sunset"],
+    estates: ["Soneva Jani (No-News No-Shoes Villas)", "One&Only Reethi Rah (Bespoke Luxury)", "Patina Maldives (Contemporary Design Suites)"]
   },
   {
     name: "Switzerland",
     kicker: "Alpine Elegance",
-    text: "Scenic rail, lake hotels, glacier viewpoints, and grand resort stays arranged with effortless timing.",
+    text: "Scenic rail journeys, lake boutique hotels, glacier viewpoints, and grand resort stays arranged with effortless timing.",
     image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1500&q=86",
-    thumb: "https://images.unsplash.com/photo-1500043357865-c6b8827edf10?auto=format&fit=crop&w=500&q=80"
+    season: "Jun-Sep / Dec-Mar",
+    visa: "Schengen Visa (15-Day Process)",
+    length: "7 - 10 Nights",
+    exps: ["Glacier Express Excel Class rail travel", "Private yacht cruise on Lake Como", "Helicopter alp glacier landing", "Private watchmaking ritual, Geneva"],
+    estates: ["The Chedi Andermatt (Alpine Masterpiece)", "Bürgenstock Resort (Lake Lucerne Views)", "Grand Hotel Tremezzo (Lake Como Heritage)"]
   },
   {
     name: "Japan",
     kicker: "Culture & Cuisine",
     text: "Ryokans, city design hotels, private guides, culinary rituals, and seasonal routes from Tokyo to Kyoto.",
     image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1500&q=86",
-    thumb: "https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=500&q=80"
+    season: "Mar-May / Oct-Nov",
+    visa: "eVisa (5-Day Process)",
+    length: "8 - 12 Nights",
+    exps: ["Bespoke Kyoto tea ceremony guesting", "Private sushi dinner by master chef", "Bullet train Green Class bookings", "Hakone thermal bath ryokan stay"],
+    estates: ["Aman Tokyo (Sleek City Sanctuary)", "Gora Kadan Hakone (Authentic Ryokan)", "Aman Kyoto (Forest Courtyard Pavilions)"]
   },
   {
     name: "Kenya",
     kicker: "Wild Luxury",
     text: "Conservation-led lodges, private game drives, bush breakfasts, and flight-linked safari routing.",
     image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1500&q=86",
-    thumb: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=500&q=80"
+    season: "Jul - Oct (Migration)",
+    visa: "eVisa / ETA (3-Day Process)",
+    length: "6 - 9 Nights",
+    exps: ["Dawn Maasai Mara balloon tour & breakfast", "Private conservancy game safari drives", "Conservation anti-poaching ranger walk", "Bush dinner beneath Serengeti stars"],
+    estates: ["Angama Mara (Cliff-top Lodge)", "Segera Retreat (Laikipia Wilderness)", "Giraffe Manor (Nairobi Landmark Stay)"]
   }
 ];
 
-let destinationIndex = 0;
-const list = document.getElementById("destinationList");
-function renderDestinations() {
-  list.innerHTML = "";
-  destinations.forEach((dest, index) => {
-    const card = document.createElement("button");
-    card.className = "destination-card";
-    card.type = "button";
-    card.innerHTML = `<img src="${dest.thumb}" alt="${dest.name}"><span class="destination-card-content"><span class="card-kicker">${dest.kicker}</span><h4>${dest.name}</h4><p>${dest.text}</p></span>`;
-    card.addEventListener("click", () => setDestination(index));
-    list.appendChild(card);
-  });
-}
-function setDestination(index) {
-  destinationIndex = (index + destinations.length) % destinations.length;
-  const dest = destinations[destinationIndex];
+const guideTabs = document.querySelectorAll(".guide-tab-btn");
+const destPlanBtn = document.getElementById("destPlanBtn");
+
+function selectDestinationExplorer(idx) {
+  const dest = destinations[idx];
+  
+  // Highlight tab
+  guideTabs.forEach((tab, i) => tab.classList.toggle("active", i === idx));
+
+  // Update featured visual card with a subtle reload animation
+  const featCard = document.getElementById("destinationFeaturedCard");
+  featCard.style.opacity = "0.7";
   document.getElementById("featuredImage").src = dest.image;
   document.getElementById("featuredKicker").textContent = dest.kicker;
   document.getElementById("featuredTitle").textContent = dest.name;
   document.getElementById("featuredText").textContent = dest.text;
-}
-document.getElementById("prevDestination").addEventListener("click", () => setDestination(destinationIndex - 1));
-document.getElementById("nextDestination").addEventListener("click", () => setDestination(destinationIndex + 1));
-renderDestinations();
+  
+  setTimeout(() => { featCard.style.opacity = "1"; }, 100);
 
+  // Update explorer guide facts
+  document.getElementById("gSeason").textContent = dest.season;
+  document.getElementById("gVisa").textContent = dest.visa;
+  document.getElementById("gLength").textContent = dest.length;
+  
+  // Update lists
+  const expList = document.getElementById("gExpList");
+  expList.innerHTML = "";
+  dest.exps.forEach(exp => {
+    expList.innerHTML += `<li>${exp}</li>`;
+  });
+
+  const estList = document.getElementById("gEstList");
+  estList.innerHTML = "";
+  dest.estates.forEach(est => {
+    estList.innerHTML += `<li>${est}</li>`;
+  });
+
+  destPlanBtn.textContent = `Plan Trip to ${dest.name}`;
+}
+
+guideTabs.forEach((tab, idx) => {
+  tab.addEventListener("click", () => {
+    selectDestinationExplorer(idx);
+  });
+});
+
+destPlanBtn.addEventListener("click", () => {
+  const destName = document.getElementById("featuredTitle").textContent;
+  window.location.hash = `#journey`;
+  // Set selected choice on Step 1 corresponding to destination
+  setTimeout(() => {
+    const stylePanelChoices = document.querySelectorAll("#panel0 .choice");
+    stylePanelChoices.forEach(ch => {
+      const val = ch.querySelector("strong").textContent;
+      if (destName === "Maldives" && val === "Ocean Retreat") ch.click();
+      else if (destName === "Switzerland" && val === "European Grandeur") ch.click();
+      else if (destName === "Japan" && val === "Culture & Cuisine") ch.click();
+      else if (destName === "Kenya" && val === "Wild Luxury") ch.click();
+    });
+  }, 100);
+});
+
+// Interactive SVG World Map details
 const mapCopy = {
-  Maldives: "Private islands, seaplane transfers, overwater villas, snorkeling routes, and dining experiences.",
-  Europe: "France, Switzerland, Italy, and Spain with rail journeys, lake resorts, and private guides.",
-  Dubai: "Luxury stopovers, desert resorts, premium shopping, family attractions, and dining reservations.",
-  Japan: "Tokyo, Kyoto, Osaka, and seasonal extensions with culture, cuisine, gardens, and ryokan stays.",
-  Kenya: "Safari circuits with expert lodges, light aircraft routing, and conservation-led wilderness stays.",
-  Australia: "City, reef, wine country, and coastal journeys with polished long-haul planning."
+  Maldives: {
+    title: "Maldives: Seaplanes, Reefs & Privacy",
+    text: "India flight time: 2.5 hours. Visa on Arrival (Free). Elite Overwater villas with seaplane connections directly from Malé hub. Best visited Nov-Apr."
+  },
+  Europe: {
+    title: "Europe: Scenic Rail & Heritage Lakes",
+    text: "India flight time: 8 hours. Schengen Visa required (TGV fast-track assistance). Stays at Como villas and Alpine resorts. Best visited May-Sep."
+  },
+  Dubai: {
+    title: "Dubai: Urban Luxury Stopovers",
+    text: "India flight time: 3 hours. eVisa (3 days). Direct connections to elite stopover suites, private yacht sailings, and desert guides."
+  },
+  Japan: {
+    title: "Japan: Cultural Ryokan & Culinary Rituals",
+    text: "India flight time: 7.5 hours. eVisa (5 days). Bullet train routing, private garden guides, and cherry blossom viewings. Best visited Mar-May."
+  },
+  Kenya: {
+    title: "Kenya: Great Migration Fly-in Safari",
+    text: "India flight time: 6 hours. eVisa / ETA (3 days). Flights directly to Maasai Mara luxury game lodges and savannah balloon safaris. Best visited Jul-Oct."
+  },
+  Australia: {
+    title: "Australia: Reef Flights & Vineyards",
+    text: "India flight time: 12 hours. Visitor Visa. Flights to Sydney, private helicopter tours of Great Barrier Reef, and boutique vineyard stays."
+  }
 };
-function setMap(name) {
-  document.getElementById("mapTitle").textContent = name;
-  document.getElementById("mapText").textContent = mapCopy[name];
-  document.querySelectorAll(".map-list button").forEach(btn => btn.classList.toggle("active", btn.dataset.map === name));
-}
-document.querySelectorAll("[data-map]").forEach(item => item.addEventListener("click", () => setMap(item.dataset.map)));
 
-function openPayment() {
-  document.getElementById("paymentOverlay").classList.add("open");
-  document.body.classList.add("modal-open");
+const mapPins = document.querySelectorAll(".pin-g");
+const mapListBtns = document.querySelectorAll(".map-list button");
+const mapInquireBtn = document.getElementById("mapInquireBtn");
+
+function selectMapLocation(name) {
+  // Highlight map pin
+  mapPins.forEach(p => {
+    if (p.dataset.map === name) p.classList.add("active");
+    else p.classList.remove("active");
+  });
+
+  // Highlight list item
+  mapListBtns.forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.map === name);
+  });
+
+  // Draw active route line
+  document.querySelectorAll(".route-path").forEach(p => p.classList.remove("active"));
+  const route = document.getElementById(`route-${name}`);
+  if (route) {
+    route.classList.add("active");
+  }
+
+  // Update card copy
+  document.getElementById("mapTitle").textContent = mapCopy[name].title;
+  document.getElementById("mapText").textContent = mapCopy[name].text;
+  mapInquireBtn.textContent = `Inquire For ${name}`;
 }
-function closePayment() {
-  document.getElementById("paymentOverlay").classList.remove("open");
-  document.body.classList.remove("modal-open");
+
+mapPins.forEach(pin => {
+  pin.addEventListener("click", () => {
+    selectMapLocation(pin.dataset.map);
+  });
+});
+
+mapListBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectMapLocation(btn.dataset.map);
+  });
+});
+
+mapInquireBtn.addEventListener("click", () => {
+  const activeLocName = document.getElementById("mapTitle").textContent.split(":")[0];
+  window.location.hash = `#journey`;
+  // Select corresponding style in builder
+  setTimeout(() => {
+    const stylePanelChoices = document.querySelectorAll("#panel0 .choice");
+    stylePanelChoices.forEach(ch => {
+      const val = ch.querySelector("strong").textContent;
+      if (activeLocName === "Maldives" && val === "Ocean Retreat") ch.click();
+      else if (activeLocName.includes("Europe") && val === "European Grandeur") ch.click();
+      else if (activeLocName.includes("Japan") && val === "Culture & Cuisine") ch.click();
+      else if (activeLocName.includes("Kenya") && val === "Wild Luxury") ch.click();
+    });
+  }, 100);
+});
+
+// FAQ Accordion Toggle
+const faqItems = document.querySelectorAll(".faq-item");
+faqItems.forEach(item => {
+  const trigger = item.querySelector(".faq-trigger");
+  trigger.addEventListener("click", () => {
+    const isActive = item.classList.contains("active");
+    
+    // Close other FAQs
+    faqItems.forEach(i => i.classList.remove("active"));
+    
+    // Toggle active on clicked one
+    if (!isActive) {
+      item.classList.add("active");
+    }
+  });
+});
+
+// Contact page form submission simulator
+const contactForm = document.getElementById("contactViewForm");
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+  const name = document.getElementById("cntName").value;
+  const originalContent = contactForm.innerHTML;
+  
+  contactForm.innerHTML = `
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p style="color:var(--purple);font-weight:700;">Submitting to Luxury Dispatch Desk...</p>
+    </div>
+  `;
+
+  setTimeout(() => {
+    contactForm.innerHTML = `
+      <div class="success-seal">
+        <div class="success-icon" style="background:var(--purple)">✉</div>
+        <h4>Consultation Registered</h4>
+        <p>Thank you, ${name}. Your consultation file has been secure-dispatched. A lead planner will contact you via email/phone within 2 hours.</p>
+        <button type="button" class="btn btn-primary" onclick="location.reload();" style="margin-top:20px;">New Consultation Request</button>
+      </div>
+    `;
+  }, 1500);
+});
+
+// Secure Payment Checkout View Logic
+const payTabs = document.querySelectorAll(".payment-tab-btn");
+const paySections = document.querySelectorAll(".payment-view-section");
+
+payTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    payTabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    
+    const secId = `paySec-${tab.dataset.tab}`;
+    paySections.forEach(sec => {
+      sec.classList.toggle("active", sec.id === secId);
+    });
+  });
+});
+
+// Card Live visualizer mapping
+const inpCardNum = document.getElementById("inpCardNum");
+const inpCardHolder = document.getElementById("inpCardHolder");
+const inpCardExpiry = document.getElementById("inpCardExpiry");
+const inpCardCvv = document.getElementById("inpCardCvv");
+
+const vCardNum = document.getElementById("cardNumVal");
+const vCardHolder = document.getElementById("cardHolderVal");
+const vCardExpiry = document.getElementById("cardExpiryVal");
+const vCardCvv = document.getElementById("cardCvvVal");
+const visualCard = document.getElementById("visualCard");
+
+// Space credit card values as typed
+inpCardNum.addEventListener("input", (e) => {
+  let val = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+  let formatted = "";
+  for (let i = 0; i < val.length; i++) {
+    if (i > 0 && i % 4 === 0) formatted += " ";
+    formatted += val[i];
+  }
+  e.target.value = formatted;
+  vCardNum.textContent = formatted || "•••• •••• •••• ••••";
+});
+
+inpCardHolder.addEventListener("input", (e) => {
+  vCardHolder.textContent = e.target.value.toUpperCase() || "YOUR NAME HERE";
+});
+
+inpCardExpiry.addEventListener("input", (e) => {
+  let val = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+  if (val.length > 2) {
+    val = val.substring(0, 2) + "/" + val.substring(2, 4);
+  }
+  e.target.value = val;
+  vCardExpiry.textContent = val || "MM/YY";
+});
+
+inpCardCvv.addEventListener("focus", () => {
+  visualCard.classList.add("flipped");
+});
+inpCardCvv.addEventListener("blur", () => {
+  visualCard.classList.remove("flipped");
+});
+inpCardCvv.addEventListener("input", (e) => {
+  let val = e.target.value.replace(/[^0-9]/gi, '');
+  e.target.value = val;
+  vCardCvv.textContent = "•".repeat(val.length) || "•••";
+});
+
+// Card submit simulation
+document.getElementById("cardPaymentForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  triggerPaymentSuccess();
+});
+
+// UPI Simulation
+let upiTimerInterval;
+function startUpiTimer() {
+  clearInterval(upiTimerInterval);
+  let totalSecs = 300; // 5 mins
+  const timerDisp = document.getElementById("qrTimerDisplay");
+  
+  upiTimerInterval = setInterval(() => {
+    totalSecs--;
+    if (totalSecs <= 0) {
+      clearInterval(upiTimerInterval);
+      timerDisp.textContent = "Code Expired! Refresh Page.";
+      return;
+    }
+    
+    let mins = Math.floor(totalSecs / 60);
+    let secs = totalSecs % 60;
+    timerDisp.textContent = `Code Expires In: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  }, 1000);
 }
-function overlayClose(event) {
-  if (event.target.id === "paymentOverlay") closePayment();
+
+document.querySelector("[data-tab='upi']").addEventListener("click", () => {
+  startUpiTimer();
+});
+
+document.getElementById("upiVerifyMockBtn").addEventListener("click", () => {
+  triggerPaymentSuccess();
+});
+
+// Net banking selections
+const bankBtns = document.querySelectorAll(".bank-option");
+bankBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    bankBtns.forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+  });
+});
+
+document.getElementById("bankSubmitBtn").addEventListener("click", () => {
+  const chosen = document.querySelector(".bank-option.selected");
+  if (!chosen) {
+    alert("Please select a bank to proceed.");
+    return;
+  }
+  triggerPaymentSuccess();
+});
+
+// Payment Success Sequence
+function triggerPaymentSuccess() {
+  const layout = document.getElementById("paymentMainLayout");
+  const successV = document.getElementById("paymentSuccessVoucher");
+  
+  // Dynamic details updates on voucher
+  document.getElementById("recDate").textContent = new Date().toISOString().replace('T', ' ').substring(0, 19);
+  
+  // Retrieve selected builder price if any
+  const sliderPrice = document.getElementById("budgetValue").textContent;
+  document.getElementById("recTotal").textContent = sliderPrice === "Rs. 6.0L" ? "Rs. 6,00,000" : sliderPrice;
+  
+  // Show spinner overlay
+  layout.innerHTML = `
+    <div style="grid-column: 1 / -1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 80px 0;">
+      <div class="spinner"></div>
+      <p style="color:var(--purple);font-weight:700;font-size:18px;">Authenticating secure transaction credentials...</p>
+    </div>
+  `;
+
+  setTimeout(() => {
+    layout.style.display = "none";
+    successV.style.display = "block";
+    
+    // Add success confetti or checkmark visual logs
+    console.log("Transaction successfully completed. Escrow fund secured.");
+  }, 1800);
 }
 </script>
 </body>
